@@ -6,9 +6,8 @@ You should use input to read a string and float() to convert the string to
 a number. Do not worry about error checking or bad user data.
 '''
 
-'''
-My variables start with: s -> string; i -> integer; f -> float
-'''
+# My variables start with: s -> string; i -> integer; f -> float
+
 sHours = input('Enter hours: ')
 sRate = input('Enter rate per hour: ')
 fHours = float(sHours)
