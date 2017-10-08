@@ -1,1 +1,1 @@
-print ('Let\'s play!')
+print('Let\'s play!')

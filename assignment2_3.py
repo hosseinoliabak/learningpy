@@ -7,13 +7,13 @@ a number. Do not worry about error checking or bad user data.
 '''
 
 '''
-My variables start with: s -> string; i -> integer; f -> float 
+My variables start with: s -> string; i -> integer; f -> float
 '''
-sHours = input ('Enter hours: ')
-sRate = input ('Enter rate per hour: ')
-fHours = float (sHours)
-fRate = float (sRate)
+sHours = input('Enter hours: ')
+sRate = input('Enter rate per hour: ')
+fHours = float(sHours)
+fRate = float(sRate)
 
 fGrossPay = fHours * fRate
-sGrossPay = str (fGrossPay)
-print ('Pay: ' + sGrossPay)
+sGrossPay = str(fGrossPay)
+print('Pay: ' + sGrossPay)
