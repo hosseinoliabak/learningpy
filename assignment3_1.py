@@ -17,6 +17,7 @@ if (fHours > 40):
     fRegularHours = 40
 
 else:
+    fOvertime = 0
     fRegularHours = fHours
 
 fGrossPay = (fRegularHours * fRate) + (fOvertime * fRate * 1.5)
