@@ -13,7 +13,7 @@ iLargest = None
 iSmallest =None
 while True:
     sInput = input('Enter and Integer or stop entering by typing "done": ')
-    if str.lower(sInput) == 'done' : break
+    if str.lower(sInput) == 'done' : break #you may ommit str.lower()
     try:
         iInput = int(sInput)
     except:
