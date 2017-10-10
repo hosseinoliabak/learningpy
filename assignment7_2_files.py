@@ -11,17 +11,17 @@ Desired Output: Average spam confidence: 0.750718518519
 '''
 sFile = input ('Enter the file name [mbox-short.txt]:')
 try: # operation_that_can_throw_ioerror()
-    fHand = open(sFile)
+    fiHand = open(sFile)
 except: # handle_the_exception_somehow()
     print ('mbox-short.txt is selected.')
-    fHand = open('https:////www.py4e.com//code3//mbox-short.txt')
+    fiHand = open('https:////www.py4e.com//code3//mbox-short.txt')
  #else:
          # we don't want to catch the IOError if it's raised
         #another_operation_that_can_throw_ioerror()
 finally: # something_we_always_need_to_do()
     fSum = 0
     iCount = 0
-    for line in fHand:
+    for line in fiHand:
         if not line.startswith('X-DSPAM-Confidence:') :
             continue
         iAtPos = line.find(':')
@@ -35,10 +35,10 @@ finally: # something_we_always_need_to_do()
 '''
 This will be working on py4e's autograder:
 sFile = input ('Enter the file name [mbox-short.txt]:')
-fHand = open(sFile)
+fiHand = open(sFile)
 fSum = 0
 iCount = 0
-for line in fHand:
+for line in fiHand:
     if not line.startswith('X-DSPAM-Confidence:') :
         continue
     iAtPos = line.find(':')

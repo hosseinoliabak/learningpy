@@ -46,6 +46,7 @@ RECEIVED: FROM MURDER (MAIL.UMICH.EDU [141.211.14.90])
 You can download the file from
 www.py4e.com/code3/mbox-short.txt
 '''
-fFile = open('mbox-short.txt')
-for line in fFile:
-    print(line.upper())  
+# My variables start with: s -> string; i -> integer; f -> float; fi -> file
+fiFile = open('mbox-short.txt')
+for line in fiFile:
+    print(line.upper())
