@@ -14,7 +14,7 @@ Enter a file name: mbox-short.txt
 # The variables start with:
 # s -> string; i -> integer; f -> float; b -> boolean
 # fi -> file; l -> list; d -> dictionary
-dWrods = dict()
+dWords = dict()
 try:
     fiHandle = open("mbox-short.txt")
 except:
@@ -24,5 +24,5 @@ else:
         if not sLine.startswith('From '):
             continue
         lWords = sLine.split()
-        dWrods[lWords[2]] = dWrods.get(lWords[2], 0) + 1
-    print(dWrods)
+        dWords[lWords[2]] = dWords.get(lWords[2], 0) + 1
+    print(dWords)

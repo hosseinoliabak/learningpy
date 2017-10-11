@@ -10,3 +10,16 @@ the most prolific committer.
 Desired Output:
 cwen@iupui.edu 5
 '''
+dWords = dict()
+try:
+    fiHandle = open("mbox-short.txt")
+except:
+    print('There is no "mbox-short.txt" file in the same folder as this script.')
+else:
+    for sLine in fiHandle:
+        if not sLine.startswith('From '):
+            continue
+        lWords = sLine.split()
+        dWords[lWords[1]] = dWords.get(lWords[1], 0) + 1
+    sMax = max(dWords, key = dWords.get)
+    print (sMax, dWords[sMax])
