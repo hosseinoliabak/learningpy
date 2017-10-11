@@ -32,19 +32,19 @@ called get() that does this for us
 The following 2 codes do the same job;
 and produce: {'csev': 2, 'cwen': 2, 'zqian': 1}
 1)
-counts = dict()
-names = ['csev', 'cwen', 'csev', 'zqian', 'cwen']
-for name in names :
-    if name not in counts:
-       counts[name] = 1
+dCounts = dict()
+lNames = ['csev', 'cwen', 'csev', 'zqian', 'cwen']
+for sName in lNames :
+    if sName not in dCounts:
+       dCounts[sName] = 1
     else :
-        counts[name] = counts[name] + 1
-print(counts)
+        dCounts[sName] = dCounts[sName] + 1
+print(dCounts)
 
 2)
-counts = dict()
-names = ['csev', 'cwen', 'csev', 'zqian', 'cwen']
-for name in names:
-    counts[name] = counts.get(name, 0) + 1
-print(counts)
+dCounts = dict()
+lNames = ['csev', 'cwen', 'csev', 'zqian', 'cwen']
+for sName in lNames:
+    dCounts[sName] = dCounts.get(sName, 0) + 1
+print(dCounts)
 '''
