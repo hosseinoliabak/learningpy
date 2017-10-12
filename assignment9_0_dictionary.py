@@ -47,6 +47,10 @@ lNames = ['csev', 'cwen', 'csev', 'zqian', 'cwen']
 for sName in lNames:
     dCounts[sName] = dCounts.get(sName, 0) + 1
 print(dCounts)
+
+Retrieving Lists of Keys and Values:
+You can get a list of keys, values, or items (both) from a dictionary.
+Example below:
 '''
 dictionary = {"ehosoli":"Hossein" , "eghoima":"Iman" , "emamahb":"Maggie"}
 print (dictionary)
@@ -74,6 +78,7 @@ for key in dictionary:
 print()
 
 print('-------------- Tuple output --------------')
+# What is a "tuple"? - coming soon...
 print()
 print (dictionary.items()) # list of tuples
 # dict_items([('ehosoli', 'Hossein'), ('eghoima', 'Iman'), ('emamahb', 'Maggie')])

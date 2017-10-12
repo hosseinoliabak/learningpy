@@ -33,3 +33,11 @@ else:
                       # disappointed with the result.
     print(lWordsList)
     fiHandle.close()
+
+    """
+    # The random module provides functions that generate pseudorandom numbers
+    # (which I will simply call "random" from here on).
+    import random
+    # To choose an element from a list at random, you can use choice:
+    print(random.choice(lWordsList))
+    """
