@@ -48,3 +48,48 @@ for sName in lNames:
     dCounts[sName] = dCounts.get(sName, 0) + 1
 print(dCounts)
 '''
+dictionary = {"ehosoli":"Hossein" , "eghoima":"Iman" , "emamahb":"Maggie"}
+print (dictionary)
+# {'ehosoli': 'Hossein', 'eghoima': 'Iman', 'emamahb': 'Maggie'}
+print()
+
+print (dictionary['ehosoli'])
+# Hossein
+print()
+
+print ( dictionary.keys()) # list of keys
+# dict_keys(['ehosoli', 'eghoima', 'emamahb'])
+print()
+
+print (dictionary.values()) # list of values
+# dict_values(['Hossein', 'Iman', 'Maggie'])
+print()
+
+print("Values are dictionary[keys]:")
+for key in dictionary:
+    print (key, "-->", dictionary[key])
+# ehosoli --> Hossein
+# eghoima --> Iman
+# emamahb --> Maggie
+print()
+
+print('-------------- Tuple output --------------')
+print()
+print (dictionary.items()) # list of tuples
+# dict_items([('ehosoli', 'Hossein'), ('eghoima', 'Iman'), ('emamahb', 'Maggie')])
+print()
+
+for item in dictionary.items():
+    print (item)
+# ('ehosoli', 'Hossein')
+# ('eghoima', 'Iman')
+# ('emamahb', 'Maggie')
+print()
+
+print("Values are from list of tuples:")
+for k, v in dictionary.items():
+    print (k, "-->", v)
+# ehosoli --> Hossein
+# eghoima --> Iman
+# emamahb --> Maggie
+print()
