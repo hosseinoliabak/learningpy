@@ -25,6 +25,15 @@ look up values. Dictionaries are like "associative arrays" in other languages.
     False
 
 The "get" Method for Dictionaries:
+The method get() returns a value for the given key. If key is not available
+then returns default value None.
+dict = {'Name': 'Zabra', 'Age': 7}
+print (dict.get('Age'))
+print (dict.get('Education'))
+Output:
+7
+None
+
 The pattern of checking to see if a key is already in a dictionary and assuming
 a default value if the key is not there is so common that there is a method
 called get() that does this for us
@@ -52,49 +61,51 @@ Retrieving Lists of Keys and Values:
 You can get a list of keys, values, or items (both) from a dictionary.
 Example below:
 '''
-dictionary = {"ehosoli":"Hossein" , "eghoima":"Iman" , "emamahb":"Maggie"}
+dictionary = {"signum":"Hossein" , "name":"Hossein Oliabak" , "phone":"123456789"}
 print (dictionary)
-# {'ehosoli': 'Hossein', 'eghoima': 'Iman', 'emamahb': 'Maggie'}
+# {'signum': 'Hossein', 'name': 'Hossein Oliabak', 'phone': '123456789'}
 print()
 
-print (dictionary['ehosoli'])
+print(dictionary['signum'])
 # Hossein
 print()
 
-print ( dictionary.keys()) # list of keys
-# dict_keys(['ehosoli', 'eghoima', 'emamahb'])
+print( dictionary.keys()) # list of keys
+# dict_keys(['signum', 'name', 'phone'])
 print()
 
-print (dictionary.values()) # list of values
-# dict_values(['Hossein', 'Iman', 'Maggie'])
+print(dictionary.values()) # list of values
+# dict_values(['Hossein', 'Hossein Oliabak', '123456789'])
 print()
 
 print("Values are dictionary[keys]:")
 for key in dictionary:
     print (key, "-->", dictionary[key])
-# ehosoli --> Hossein
-# eghoima --> Iman
-# emamahb --> Maggie
+# Values are dictionary[keys]:
+# signum --> Hossein
+# name --> Hossein Oliabak
+# phone --> 123456789
 print()
 
 print('-------------- Tuple output --------------')
 # What is a "tuple"? - coming soon...
 print()
 print (dictionary.items()) # list of tuples
-# dict_items([('ehosoli', 'Hossein'), ('eghoima', 'Iman'), ('emamahb', 'Maggie')])
+# dict_items([('signum', 'Hossein'), ('name', 'Hossein Oliabak'), ('phone', '123456789')])
 print()
 
 for item in dictionary.items():
     print (item)
-# ('ehosoli', 'Hossein')
-# ('eghoima', 'Iman')
-# ('emamahb', 'Maggie')
+# ('signum', 'Hossein')
+# ('name', 'Hossein Oliabak')
+# ('phone', '123456789')
 print()
 
 print("Values are from list of tuples:")
 for k, v in dictionary.items():
-    print (k, "-->", v)
-# ehosoli --> Hossein
-# eghoima --> Iman
-# emamahb --> Maggie
+    print(k, "-->", v)
+# Values are from list of tuples:
+# signum --> Hossein
+# name --> Hossein Oliabak
+# phone --> 123456789
 print()
