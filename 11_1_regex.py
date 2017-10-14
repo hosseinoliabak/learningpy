@@ -17,7 +17,6 @@ Actual data: http://py4e-data.dr-chuck.net/regex_sum_39125.txt
 The file contains much of the text from the introduction of the textbook except
 that random numbers are inserted throughout the text. Here is a sample of the
 output you might see:
-
 +---------------------------------------------------------------------+
 | Why should you learn to write programs? 7746                        |
 | 12 1929 8827                                                        |
@@ -28,6 +27,7 @@ output you might see:
 | someone else solve a problem.  This book assumes that               |
 | everyone needs to know how to program ...                           |
 +---------------------------------------------------------------------+
+
 The sum for the sample text above is 27486. The numbers can appear anywhere in
 the line. There can be any number of numbers in each line (including none).
 
@@ -36,3 +36,16 @@ The basic outline of this problem is to read the file, look for integers using
 the re.findall(), looking for a regular expression of '[0-9]+' and then
 converting the extracted strings to integers and summing up the integers.
 '''
+import re
+iSum = 0
+try:
+    sFileName = "regex_sum_39125.txt"
+    fiHandle = open(sFileName)
+except:
+    print('There is no"', sFileName,'"file in the same folder as this script.')
+else:
+    sFileContent = fiHandle.read()
+    lNumbers = re.findall('[0-9]+',sFileContent)
+    for i in lNumbers:
+        iSum = iSum + int(i)
+    print(iSum)
