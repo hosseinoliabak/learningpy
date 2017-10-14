@@ -92,14 +92,17 @@ print('-------------- Tuple output --------------')
 print()
 print (dictionary.items()) # list of tuples
 # dict_items([('signum', 'Hossein'), ('name', 'Hossein Oliabak'), ('phone', '123456789')])
+print (sorted(dictionary.items())) # list of tuples sorted by keys
+# [('name', 'Hossein Oliabak'), ('phone', '123456789'), ('signum', 'Hossein')]
 print()
 
-for item in dictionary.items():
+for item in dictionary.items(): # We could use: for item in sorted(dictionary.items()):
     print (item)
 # ('signum', 'Hossein')
 # ('name', 'Hossein Oliabak')
 # ('phone', '123456789')
 print()
+
 
 print("Values are from list of tuples:")
 for k, v in dictionary.items():
