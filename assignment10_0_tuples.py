@@ -1,4 +1,9 @@
 '''
+Fun fact: The word "tuple" comes from the names given to sequences of numbers of
+varying lengths: single, double, triple, quadruple, quituple, sextuple,
+septuple, etc.↩
+
+
 They are much like lists; they have elements which are indexed starting at 0.
 But, we are using parentheses "()" and tuples are "immutable". (strings are NOT
 immutable also)
@@ -69,13 +74,10 @@ b 1
 c 22
 
 Sort by Values Instead of Key:
-Taking advantage of "List Comprehensions": 
+Taking advantage of "List Comprehensions":
 >>> c = {'a':10, 'b':1, 'c':22}
 
->>> print( sorted( [ (v,k) for k,v in c.items() ] ) )
+>>> print(sorted([(v, k) for k, v in c.items()]))
 
 [(1, 'b'), (10, 'a'), (22, 'c')]
-
-
-
 '''
