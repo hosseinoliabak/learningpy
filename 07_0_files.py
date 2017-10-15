@@ -18,14 +18,14 @@ for line in xfile:
 
 
 # Searching Through a File:
-fhand = open('mbox-short.txt')
-for line in fhand:
+flHand = open('mbox-short.txt')
+for line in flHand:
     if line.startswith('From:') :
         print(line,end='')
 
 # The last code is the same as:
-fhand = open('mbox-short.txt')
-for line in fhand:
+flHand = open('mbox-short.txt')
+for line in flHand:
     line = line.rstrip()
     if not line.startswith('From:') :
         continue
