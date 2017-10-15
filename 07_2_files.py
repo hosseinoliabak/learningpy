@@ -9,12 +9,12 @@ You can download the sample data at http://www.py4e.com/code3/mbox-short.txt
 when you are testing below enter mbox-short.txt as the file name.
 Desired Output: Average spam confidence: 0.750718518519
 '''
-sFile = input ('Enter the file name [mbox-short.txt]:')
+sFile = input ('Enter the file name [data\mbox-short.txt]:')
 try: # operation_that_can_throw_ioerror()
     flHand = open(sFile)
 except: # handle_the_exception_somehow()
-    print ('mbox-short.txt is selected.')
-    flHand = open('mbox-short.txt')
+    print ('data\mbox-short.txt is selected.')
+    flHand = open('data\mbox-short.txt')
  #else:
          # we don't want to catch the IOError if it's raised
         #another_operation_that_can_throw_ioerror()
