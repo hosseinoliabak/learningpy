@@ -14,7 +14,7 @@ Desired Output:
 '''
 # The variables start with:
 # s -> string; i -> integer; f -> float; b -> boolean
-# fi -> file; l -> list
+# fl -> file; l -> list
 lWordsList = list() # this is the same as lWordsList = list[]
 try:
     flHand = open("romeo.txt")

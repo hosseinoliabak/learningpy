@@ -14,7 +14,7 @@ Enter file name: mbox-short.txt
 '''
 # The variables start with:
 # s -> string; i -> integer; f -> float; b -> boolean
-# fi -> file; l -> list; d -> dictionary
+# fl -> file; l -> list; d -> dictionary
 dWords = dict()
 try:
     flHand = open("mbox-short.txt")
