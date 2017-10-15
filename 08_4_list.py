@@ -17,7 +17,7 @@ Desired Output:
 # fl -> file; l -> list
 lWordsList = list() # this is the same as lWordsList = list[]
 try:
-    flHand = open('data\\romeo.txt')
+    flHand = open('romeo.txt')
 except:
     print('There is no such file.')
 else:

@@ -42,7 +42,7 @@ lFromsList = list()
 lWordsList = list() # this is the same as lWordsList = list[]
 iCount = 0
 try:
-    flHand = open("data\mbox-short.txt")
+    flHand = open("mbox-short.txt")
 except:
     print('There is no "mbox-short.txt" file in "data" folder.')
 else:
