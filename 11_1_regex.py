@@ -40,11 +40,11 @@ import re
 iSum = 0
 try:
     sFileName = "regex_sum_39125.txt"
-    fiHandle = open(sFileName)
+    flHand = open(sFileName)
 except:
     print('There is no"', sFileName,'"file in the same folder as this script.')
 else:
-    sFileContent = fiHandle.read()
+    sFileContent = flHand.read()
     lNumbers = re.findall('[0-9]+',sFileContent)
     for i in lNumbers:
         iSum = iSum + int(i)
