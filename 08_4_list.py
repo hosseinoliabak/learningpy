@@ -17,9 +17,9 @@ Desired Output:
 # fl -> file; l -> list
 lWordsList = list() # this is the same as lWordsList = list[]
 try:
-    flHand = open("romeo.txt")
+    flHand = open('data\\romeo.txt')
 except:
-    print('There is no "romeo.txt" file in the same folder as this script.')
+    print('There is no such file.')
 else:
     for sLines in flHand:
         #sLines = sLines.rstrip()

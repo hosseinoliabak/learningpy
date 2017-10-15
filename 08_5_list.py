@@ -42,9 +42,9 @@ lFromsList = list()
 lWordsList = list() # this is the same as lWordsList = list[]
 iCount = 0
 try:
-    flHand = open("mbox-short.txt")
+    flHand = open("data\mbox-short.txt")
 except:
-    print('There is no "mbox-short.txt" file in the same folder as this script.')
+    print('There is no "mbox-short.txt" file in "data" folder.')
 else:
     for sLines in flHand:
         if not sLines.startswith('From '):
