@@ -42,11 +42,11 @@ lFromsList = list()
 lWordsList = list() # this is the same as lWordsList = list[]
 iCount = 0
 try:
-    fiHandle = open("mbox-short.txt")
+    flHand = open("mbox-short.txt")
 except:
     print('There is no "mbox-short.txt" file in the same folder as this script.')
 else:
-    for sLines in fiHandle:
+    for sLines in flHand:
         if not sLines.startswith('From '):
             continue
         lFromsList.append(sLines)
@@ -55,4 +55,4 @@ else:
         lWrodsList = sWords.split()
         print(lWrodsList[1])
     print('There were',iCount,'lines in the file with From as the first word')
-    fiHandle.close()
+    flHand.close()

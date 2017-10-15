@@ -17,11 +17,11 @@ Desired Output:
 # fi -> file; l -> list
 lWordsList = list() # this is the same as lWordsList = list[]
 try:
-    fiHandle = open("romeo.txt")
+    flHand = open("romeo.txt")
 except:
     print('There is no "romeo.txt" file in the same folder as this script.')
 else:
-    for sLines in fiHandle:
+    for sLines in flHand:
         #sLines = sLines.rstrip()
         lLines = sLines.split()
         for sWords in lLines:
@@ -32,7 +32,7 @@ else:
                       # lWordsList = lWordsList.sort(), you will be
                       # disappointed with the result.
     print(lWordsList)
-    fiHandle.close()
+    flHand.close()
 
     """
     # The random module provides functions that generate pseudorandom numbers
