@@ -23,11 +23,11 @@ Desired Output:
 '''
 dHours = dict()
 try:
-    fiHandle = open("mbox-short.txt")
+    flHand = open("mbox-short.txt")
 except:
     print('There is no "mbox-short.txt" file in the same folder as this script.')
 else:
-    for sLine in fiHandle:
+    for sLine in flHand:
         if not sLine.startswith('From '):
             continue
         lWords = sLine.split()
