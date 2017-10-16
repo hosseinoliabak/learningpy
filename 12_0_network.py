@@ -70,7 +70,7 @@ socket.gethostname(): Returns the hostname.
 
 =================================urllib.request=================================
 The module urllib.request is a Python module for fetching URLs.
-It offers a very simple interface, in the form of the urlopenfunction.
+It offers a very simple interface, in the form of the urlopen function.
 This is capable of fetching URLs using a variety of different protocols.
 Let’s take a look at a simple way to fetch the contents of a specific URL:
 +----------------------------Example-----------------------------+

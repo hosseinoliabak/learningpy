@@ -34,20 +34,20 @@ content.
 '''
 # The variables start with:
 # s -> string; i -> integer; f -> float; b -> boolean
-# fl -> file; l -> list; d -> dictionary; c -> class; byte -> bytes
+# fl -> file; l -> list; d -> dictionary; sock -> socket; byte -> bytes
 import socket
 
-cSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sockSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sHost = 'data.pr4e.org'
 iPort = 80
-cSocket.connect((sHost, iPort))
+sockSocket.connect((sHost, iPort))
 byteCmd = 'GET http://data.pr4e.org/intro-short.txt HTTP/1.0\r\n\r\n'.encode()
-cSocket.send(byteCmd) # method send() to transmit the TCP message
+sockSocket.send(byteCmd) # method send() to transmit the TCP message
 
 while True:
-    byteData = cSocket.recv(512)
+    byteData = sockSocket.recv(512)
     if (len(byteData) < 1):
         break
     print(byteData.decode())
 
-cSocket.close()
+sockSocket.close()
