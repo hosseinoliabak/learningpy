@@ -132,7 +132,7 @@ gcc: error: /usr/lib/python3.6/config-3.6m/libpython3.6m.so: No such file or dir
 
 That can be solved by symlinks:
 
-```shell
+```python3
 ln -s /usr/lib/python3.6/config-3.6m{-x86_64-linux-gnu,}
 ```
 
