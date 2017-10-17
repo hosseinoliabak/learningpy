@@ -83,4 +83,4 @@ sUrl = "http://py4e-data.dr-chuck.net/comments_39127.html"
 byteHtml = urlopen(sUrl, context=ctx).read()
 bsSoup = BeautifulSoup(byteHtml, "html.parser")
 bsElementResultSet = bsSoup('span')
-print('Sum =',sum([int(s.contents[0]) for s in bsElementResultSet]))
+print('Sum =',sum([int(bsElementTag.contents[0]) for bsElementTag in bsElementResultSet]))
