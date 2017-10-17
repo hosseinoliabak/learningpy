@@ -8,6 +8,7 @@ example: print(sSlice[6:20])
 - [:2] means from character 0 up to 2 (not including character 2)
 - [8:] means from character 8 to the end
 - [:] means whole the string
+- [::-1] this is a handy way of reversing a string
 
 find():
 We use find() function to search for a substring within another string. find()
