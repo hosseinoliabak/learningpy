@@ -12,7 +12,7 @@ import urllib.request, re
 httpResponse = urllib.request.urlopen('http://www.bbc.com/news')
 sHtml = httpResponse.read().decode()
 lHtml = sHtml.split('\n')
-iCount = sum(1 for line in lHtml)
+iCount = sum(1 for sLine in lHtml)
 lBBC = re.findall(r'\sBBC\s',sHtml)
 print ('-------------------------HTTP header-------------------------')
 print(httpResponse.info())
