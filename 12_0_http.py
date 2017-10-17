@@ -106,16 +106,16 @@ returned URL
 |# use the info() function in order to obtain information about the urlfetched.|
 |headers = response.info()                                                     |
 |# use the geturl() function to get the actual URL retrieved                   |
-|print (headers[“Date”])                                                       |
-|print (headers[“Content-Type”])                                               |
+|print (headers["Date"])                                                       |
+|print (headers["Content-Type"])                                               |
 +------------------------------------------------------------------------------+
 
 =================================beautifulsoup==================================
-The module beautifulsoupallows us to navigate html pages in a very convenient
+The module beautifulsoup allows us to navigate html pages in a very convenient
 way. We do not have to program the details of finding specific tags and extract
-content, beautifulsoupdoes that for us.
+content, beautifulsoup does that for us.
 
-Let’s take a look at a trivial example of using beautifulsoupto extract all <a>
+Let’s take a look at a trivial example of using beautifulsoup to extract all <a>
 tags from the html of a web page.
 +------------------Example-------------------+
 |import urllib.request                       |
