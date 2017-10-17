@@ -70,19 +70,13 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import ssl
 
-# Ignore SSL certificate errors 
+# Ignore SSL certificate errors
 ctx = ssl.create_default_context()
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
-url = "https://www.py4e.com/code3/urllink2.py"
-html = urlopen(url, context=ctx).read()
-
-soup = BeautifulSoup(html, "html.parser")
-
-tags = soup('a')
-for tag in tags:
-    print('TAG:', tag)
-    print('URL:', tag.get('href', None))
-    print('Contents:', tag.contents[0])
-    print('Attrs:', tag.attrs)
+sUrl = "http://py4e-data.dr-chuck.net/comments_39127.html"
+byteHtml = urlopen(sUrl, context=ctx).read()
+bsSoup = BeautifulSoup(byteHtml, "html.parser")
+bsElementResultSet = bsSoup('span')
+print('Sum =',sum([int(s.contents[0]) for s in bsElementResultSet]))

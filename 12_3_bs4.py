@@ -6,12 +6,17 @@ Print all href links
 '''
 import urllib.request
 from bs4 import BeautifulSoup
-httpResponse = urllib.request.urlopen('http://httpbin.org')
-bHtml = httpResponse.read()
-bsSoup = BeautifulSoup(bHtml, "html.parser")
-bsElement_a = bsSoup('a')
-for rows in bsElement_a:
-    sHref = rows.get('href')
-    lHrefContents = rows.contents
-    print(sHref)
-    print(lHrefContents)
+
+httpResponse = urllib.request.urlopen('http://www.httpbin.org')
+byteHtml = httpResponse.read()
+bsSoup = BeautifulSoup(byteHtml, "html.parser")
+bsElementResultSet = bsSoup('a')
+
+for bsElementTag in bsElementResultSet:
+    sHref = bsElementTag.get('href', None)
+    lHrefContents = bsElementTag.contents
+    dAttrs = bsElementTag.attrs
+    print('TAG:', bsElementTag)
+    print('URL:', sHref)
+    print('Contents:', lHrefContents[0])
+    print('Attrs:', dAttrs)
