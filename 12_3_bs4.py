@@ -4,6 +4,10 @@ Open the URL www.meteomedia.com
 Find how many <a> tags are there in the html code
 Print all href links
 '''
+# The variables start with:
+# s -> string; i -> integer; f -> float; b -> boolean; fl -> file;
+# l -> list; d -> dictionary; sock -> socket; byte -> bytes; bs -> BeautifulSoup
+
 import urllib.request
 from bs4 import BeautifulSoup
 

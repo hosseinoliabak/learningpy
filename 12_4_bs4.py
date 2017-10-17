@@ -66,6 +66,10 @@ You need to adjust this code to look for span tags and pull out the text content
 of the span tag, convert them to integers and add them up to complete the
 assignment.
 '''
+# The variables start with:
+# s -> string; i -> integer; f -> float; b -> boolean; fl -> file;
+# l -> list; d -> dictionary; sock -> socket; byte -> bytes; bs -> BeautifulSoup
+
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import ssl
