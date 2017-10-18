@@ -42,11 +42,7 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import ssl
 
-stringUrl = input('Enter URL: ')
-intCount = int(input('Enter count: '))
-intPosition = int(input('Enter position: ')) - 1
-
-def followLink(sUrl, iCount = 0):
+def followLink(sUrl = 'http://py4e-data.dr-chuck.net/known_by_Rebecca.html', iCount = 0):
     # Ignore SSL certificate errors
     sslContext = ssl.create_default_context()
     sslContext.check_hostname = False
@@ -63,4 +59,11 @@ def followLink(sUrl, iCount = 0):
     if(iCount < intCount - 1):
         return(followLink(bsStrHref, iCount + 1))
 
-followLink(stringUrl)
+stringUrl = input('Enter URL: ')
+intCount = int(input('Enter count: '))
+intPosition = int(input('Enter position: ')) - 1
+
+if stringUrl:
+    followLink(stringUrl)
+else:
+    followLink()
