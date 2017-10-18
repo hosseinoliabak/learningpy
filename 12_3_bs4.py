@@ -11,8 +11,7 @@ Print all href links
 import urllib.request
 from bs4 import BeautifulSoup
 
-httpResponse = urllib.request.urlopen('http://www.httpbin.org')
-byteHtml = httpResponse.read()
+byteHtml = urllib.request.urlopen('http://www.httpbin.org').read()
 bsSoup = BeautifulSoup(byteHtml, "html.parser")
 bsElementResultSet = bsSoup('a')
 
