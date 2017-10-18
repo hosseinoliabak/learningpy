@@ -75,12 +75,12 @@ from bs4 import BeautifulSoup
 import ssl
 
 # Ignore SSL certificate errors
-ctx = ssl.create_default_context()
-ctx.check_hostname = False
-ctx.verify_mode = ssl.CERT_NONE
+sslContext = ssl.create_default_context()
+sslContext.check_hostname = False
+sslContext.verify_mode = ssl.CERT_NONE
 
 sUrl = "http://py4e-data.dr-chuck.net/comments_39127.html"
-byteHtml = urlopen(sUrl, context=ctx).read()
+byteHtml = urlopen(sUrl, context = sslContext).read()
 bsSoup = BeautifulSoup(byteHtml, "html.parser")
 bsElementResultSet = bsSoup('span')
 print('Sum =',sum([int(bsElementTag.contents[0]) for bsElementTag in bsElementResultSet]))
