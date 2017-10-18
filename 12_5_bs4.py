@@ -63,7 +63,7 @@ stringUrl = input('Enter URL: ')
 intCount = int(input('Enter count: '))
 intPosition = int(input('Enter position: ')) - 1
 
-if stringUrl:
+try:
     followLink(stringUrl)
-else:
+except:
     followLink()
