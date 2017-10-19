@@ -67,8 +67,9 @@ of the span tag, convert them to integers and add them up to complete the
 assignment.
 '''
 # The variables start with:
-# s -> string; i -> integer; f -> float; b -> boolean; fl -> file;
-# l -> list; d -> dictionary; sock -> socket; byte -> bytes; bs -> BeautifulSoup
+# s -> string; i -> integer; f -> float; b -> boolean; fl -> file; t -> tuples
+# l -> list; d -> dictionary; ; byte -> bytes;
+# sock -> socket object; bs -> BeautifulSoup object
 
 from urllib.request import urlopen
 from bs4 import BeautifulSoup

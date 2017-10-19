@@ -33,8 +33,9 @@ manually examine the headers that are returned.
 content.
 '''
 # The variables start with:
-# s -> string; i -> integer; f -> float; b -> boolean
-# fl -> file; l -> list; d -> dictionary; sock -> socket; byte -> bytes
+# s -> string; i -> integer; f -> float; b -> boolean; fl -> file; t -> tuples
+# l -> list; d -> dictionary; ; byte -> bytes;
+# sock -> socket object;
 import socket
 
 sockSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
