@@ -82,6 +82,7 @@ Let’s take a look at a simple way to fetch the contents of a specific URL:
 |# go through all the lines in the variable (content of the URL) |
 |For linein html:                                                |
 |    print(line)                                                 |
+|# Like a file...                                                |
 +----------------------------------------------------------------+
 
 There are 2 handy functions that can be used with the reponse object returned
