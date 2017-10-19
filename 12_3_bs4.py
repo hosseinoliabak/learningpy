@@ -5,8 +5,8 @@ Find how many <a> tags are there in the html code
 Print all href links
 '''
 # The variables start with:
-# s -> string; i -> integer; f -> float; b -> boolean; fl -> file; t -> tuples
-# l -> list; d -> dictionary; ; byte -> bytes;
+# s -> string; i -> integer; f -> float; b -> boolean; fl -> file;
+# t -> tuples; l -> list; d -> dictionary; ; byte -> bytes;
 # sock -> socket object; bs -> BeautifulSoup object
 
 import urllib.request

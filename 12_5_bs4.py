@@ -36,8 +36,8 @@ Hint: The first character of the name of the last page that you will load is: A
 The answer to the assignment for this execution is "Anayah".
 '''
 # The variables start with:
-# s -> string; i -> integer; f -> float; b -> boolean; fl -> file; t -> tuples
-# l -> list; d -> dictionary; ; byte -> bytes;
+# s -> string; i -> integer; f -> float; b -> boolean; fl -> file;
+# t -> tuples; l -> list; d -> dictionary; ; byte -> bytes;
 # sock -> socket object; bs -> BeautifulSoup object
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
