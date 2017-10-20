@@ -47,6 +47,7 @@ the comments node and then loop through the child nodes of the comments node.
 +--------------------------------------------------------------+
 """
 from urllib.request import urlopen
+import urllib.error
 import xml.etree.ElementTree as ET
 import ssl
 
@@ -55,10 +56,14 @@ sslContext = ssl.create_default_context()
 sslContext.check_hostname = False
 sslContext.verify_mode = ssl.CERT_NONE
 
-sUrl = 'http://py4e-data.dr-chuck.net/comments_42.xml'
-byteHttp = urlopen(sUrl, context = sslContext)
-sHttp = byteHttp.read().decode()
-
-xmlElementTreeObj = ET.fromstring(sHttp)
-xmlElementList = xmlElementTreeObj.findall('.//count')
-print(sum([int(xmlElement.text) for xmlElement in xmlElementList]))
+sUrl = input('Enter location:')
+try:
+    byteHttp = urlopen(sUrl, context = sslContext)
+except:
+    sUrl = 'http://py4e-data.dr-chuck.net/comments_39129.xml'
+    byteHttp = urlopen(sUrl, context = sslContext)
+finally:
+    sHttp = byteHttp.read().decode()
+    xmlElementTreeObj = ET.fromstring(sHttp)
+    xmlElementList = xmlElementTreeObj.findall('.//count')
+    print(sum([int(xmlElement.text) for xmlElement in xmlElementList]))
