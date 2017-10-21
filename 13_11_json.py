@@ -43,3 +43,29 @@ URL and retrieve data from a URL.
 |Sum: 2...                                                         |
 +------------------------------------------------------------------+
 '''
+# The variables start with:
+# s -> string; i -> integer; f -> float; b -> boolean; fl -> file;
+# t -> tuples; l -> list; d -> dictionary; ; byte -> bytes;
+# sock -> socket object; bs -> BeautifulSoup object
+
+from urllib.request import urlopen
+import json
+import ssl
+
+# Ignore SSL certificate errors
+sslContext = ssl.create_default_context()
+sslContext.check_hostname = False
+sslContext.verify_mode = ssl.CERT_NONE
+
+sUrl = input('Enter location:')
+try:
+    byteHttp = urlopen(sUrl, context = sslContext)
+except:
+    sUrl = 'http://py4e-data.dr-chuck.net/comments_39130.json'
+    byteHttp = urlopen(sUrl, context = sslContext)
+finally:
+    sHttp = byteHttp.read().decode()
+    dInfo = json.loads(sHttp)
+    lComments = dInfo['comments']
+    print('Count:', len(lComments))
+    print('Sum:',sum([i['count'] for i in lComments]))
