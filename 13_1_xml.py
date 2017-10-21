@@ -47,7 +47,6 @@ the comments node and then loop through the child nodes of the comments node.
 +--------------------------------------------------------------+
 """
 from urllib.request import urlopen
-import urllib.error
 import xml.etree.ElementTree as ET
 import ssl
 
