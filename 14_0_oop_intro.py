@@ -529,4 +529,66 @@ print(emp1 + emp2)
 print(len(emp1))
 """
 
+"""
+#12 Property Decorators - Getters, Setters, and Deleters
+class Employee:
+
+    def __init__(self, sFirst, sLast, fPay):
+        self.first = sFirst
+        self.last = sLast
+        self.pay = fPay
+
+    @property #We define email as a method, but we'll access it as an atribute
+    def email(self):
+        return '{}.{}@email.com'.format(str.lower(self.first), str.lower(self.last))
+
+    @property
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+
+emp1 = Employee('Hossein', 'Oliabak', 64000)
+emp1.first = 'Ryan'
+
+print(emp1.email)
+print(emp1.fullname)
+"""
+
+"""
+#13 Property Decorators - Getters, Setters, and Deleters
+class Employee:
+
+    def __init__(self, sFirst, sLast, fPay):
+        self.first = sFirst
+        self.last = sLast
+        self.pay = fPay
+
+    @property #We define email as a method, but we'll access it as an atribute
+    def email(self):
+        return '{}.{}@email.com'.format(str.lower(self.first), str.lower(self.last))
+
+    @property
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+
+    @fullname.setter
+    def fullname(self, name):
+        sFirst, sLast = name.split(' ')
+        self.first = sFirst
+        self.last = sLast
+
+    @fullname.deleter
+    def fullname(self):
+        print('Delete Name!')
+        self.first = None
+        self.last = None
+
+emp1 = Employee('Hossein', 'Oliabak', 64000)
+emp1.fullname = 'Iman Gh'
+
+print(emp1.email)
+print(emp1.fullname)
+
+del emp1.fullname
+"""
+
 # @ https://www.youtube.com/watch?v=ZDa-Z5JzLYM&list=PL-osiE80TeTsqhIuOqKhwlXsIBIdSeYtc
