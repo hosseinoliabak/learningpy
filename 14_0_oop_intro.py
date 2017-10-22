@@ -302,7 +302,7 @@ print('emp1 raise amount', emp1.raise_amount)
 print('emp2 raise amount', emp2.raise_amount)
 """
 
-
+"""
 #5 Class Variables
 class Employee:
 
@@ -321,3 +321,6 @@ emp1 = Employee('Hossein', 'Oliabak', 64000)
 emp2 = Employee('Iman', 'Gh', 60000)
 print(Employee.num_of_emps)
 print(emp1.first)
+"""
+# Go deeper in OOP?
+# @ https://www.youtube.com/watch?v=ZDa-Z5JzLYM&list=PL-osiE80TeTsqhIuOqKhwlXsIBIdSeYtc
