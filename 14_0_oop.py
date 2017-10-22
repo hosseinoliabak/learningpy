@@ -1,3 +1,5 @@
+#If section 1 is not easy to understand, jump to Section 2
+#----------------------------------Section 1------------------------------------
 '''
 Terminology:
 Attributes: data associated with a class
@@ -198,3 +200,56 @@ Let's create instances of our class:
 |get_health()                     |  get_health()                   |
 +---------------------------------+---------------------------------+
 '''
+#----------------------------------Section 1------------------------------------
+# Learn Python OOP through codes
+"""
+#1
+class Employee:
+    pass # We just want to skip for now (no atributes and no methods)
+
+emp1 = Employee()
+emp1.name = "Hossein"
+emp1.last = "Oliabak"
+emp1.pay = 64000
+emp1.email = "hossein.oliabak@company.com"
+
+emp2 = Employee()
+emp2.name = "Iman"
+emp2.last = "Gh"
+emp2.pay = 64000
+emp2.email = "iman.gh@company.com"
+print('{} {}'.format(emp1.name, emp2.name))
+"""
+"""
+#2
+class Employee:
+
+    def __init__(this, sFirst, sLast, fPay):
+        this.first = sFirst
+        this.last = sLast
+        this.pay = fPay
+        this.email = str.lower(sFirst) + '.' + str.lower(sLast) + '@company.com'
+
+emp1 = Employee('Hossein', 'Oliabak', 64000)
+emp2 = Employee('Iman', 'Gh', 64000)
+print('{} {}'.format(emp1.email, emp2.email))
+"""
+"""
+#3
+class Employee:
+
+    def __init__(this, sFirst, sLast, fPay):
+        this.first = sFirst
+        this.last = sLast
+        this.pay = fPay
+        this.email = str.lower(sFirst) + '.' + str.lower(sLast) + '@company.com'
+
+    def fullname(this):
+        return '{} {}'.format(this.first, this.last)
+
+emp1 = Employee('Hossein', 'Oliabak', 64000)
+emp2 = Employee('Iman', 'Gh', 64000)
+
+print(Employee.fullname(emp1))
+print(emp2.fullname())
+"""
