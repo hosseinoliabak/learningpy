@@ -448,7 +448,7 @@ dev1.apply_raise()
 print('After raise:',dev1.pay)
 """
 
-
+"""
 #10 Inheritance - Creating Subclasses
 class Employee:
 
@@ -480,5 +480,53 @@ dev2 = Developer('Mahbod', 'Zo', 60000, 'Java')
 
 print(dev1.fullname())
 print(dev1.prog_lang)
+
+print(issubclass(Developer, Employee))
+print(isinstance(dev1, Employee))
+"""
+
+"""
+#11 Special (Magic/Dunder) Methods
+# __ is dunder (__init__, __repr__, __str__ will be the ones you'll use the most often)
+class Employee:
+
+    raise_amount = 1.04
+
+    def __init__(self, sFirst, sLast, fPay):
+        self.first = sFirst
+        self.last = sLast
+        self.pay = fPay
+        self.email = str.lower(sFirst) + '.' + str.lower(sLast) + '@company.com'
+
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+
+    def apply_raise(self):
+        self.pay = float(self.pay * self.raise_amount)
+
+    def __repr__(self):
+        return "Employee('{}', '{}', {})".format(self.first, self.last, self.pay)
+
+    def __str__(self):
+        return '{} - {}'.format(self.fullname(), self.email)
+
+    def __add__(self, other):
+        return self.pay + other.pay
+
+    def __len__(self):
+        return len(self.fullname())
+
+emp1 = Employee('Iman', 'Gh', 60000)
+emp2 = Employee('Mahbod', 'Zo', 60000)
+
+print(emp1)
+
+print(repr(emp1))
+print(str(emp1))
+
+print(emp1 + emp2)
+
+print(len(emp1))
+"""
 
 # @ https://www.youtube.com/watch?v=ZDa-Z5JzLYM&list=PL-osiE80TeTsqhIuOqKhwlXsIBIdSeYtc
