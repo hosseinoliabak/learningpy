@@ -203,7 +203,7 @@ Let's create instances of our class:
 #----------------------------------Section 1------------------------------------
 # Learn Python OOP through codes
 """
-#1
+#1 Classes and instances
 class Employee:
     pass # We just want to skip for now (no atributes and no methods)
 
@@ -216,12 +216,17 @@ emp1.email = "hossein.oliabak@company.com"
 emp2 = Employee()
 emp2.name = "Iman"
 emp2.last = "Gh"
-emp2.pay = 64000
+emp2.pay = 60000
 emp2.email = "iman.gh@company.com"
 print('{} {}'.format(emp1.name, emp2.name))
+
+print(Employee.__dict__)
+print(emp1.__dict__)
+print(emp2.__dict__)
 """
+
 """
-#2
+#2 Classes and instances
 class Employee:
 
     def __init__(this, sFirst, sLast, fPay):
@@ -231,11 +236,16 @@ class Employee:
         this.email = str.lower(sFirst) + '.' + str.lower(sLast) + '@company.com'
 
 emp1 = Employee('Hossein', 'Oliabak', 64000)
-emp2 = Employee('Iman', 'Gh', 64000)
+emp2 = Employee('Iman', 'Gh', 60000)
 print('{} {}'.format(emp1.email, emp2.email))
+
+print(Employee.__dict__)
+print(emp1.__dict__)
+print(emp2.__dict__)
 """
+
 """
-#3
+#3 Classes and instances
 class Employee:
 
     def __init__(this, sFirst, sLast, fPay):
@@ -248,8 +258,45 @@ class Employee:
         return '{} {}'.format(this.first, this.last)
 
 emp1 = Employee('Hossein', 'Oliabak', 64000)
-emp2 = Employee('Iman', 'Gh', 64000)
+emp2 = Employee('Iman', 'Gh', 60000)
 
 print(Employee.fullname(emp1))
 print(emp2.fullname())
+
+print(Employee.__dict__)
+print(emp1.__dict__)
+print(emp2.__dict__)
 """
+
+
+#4 Class Variables
+class Employee:
+
+    raise_amount = 1.04
+
+    def __init__(this, sFirst, sLast, fPay):
+        this.first = sFirst
+        this.last = sLast
+        this.pay = fPay
+        this.email = str.lower(sFirst) + '.' + str.lower(sLast) + '@company.com'
+
+    def fullname(this):
+        return '{} {}'.format(this.first, this.last)
+
+    def apply_raise(this):
+        this.pay = int(this.pay * this.raise_amount)
+
+emp1 = Employee('Hossein', 'Oliabak', 64000)
+emp2 = Employee('Iman', 'Gh', 60000)
+
+print('Before raise', emp2.pay)
+emp2.apply_raise()
+print('After raise', emp2.pay)
+print('All employees raise amount:', Employee.raise_amount)
+print('emp1 raise amount', emp1.raise_amount)
+print('emp2 raise amount', emp2.raise_amount)
+
+emp2.raise_amount = 1.05
+print('All employees raise amount:', Employee.raise_amount)
+print('emp1 raise amount', emp1.raise_amount)
+print('emp2 raise amount', emp2.raise_amount)
