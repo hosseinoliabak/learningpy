@@ -269,10 +269,10 @@ print(emp2.__dict__)
 """
 
 """
-#4 Class Variables
+#4 Class Variables AKA Static Variables
 class Employee:
 
-    raise_amount = 1.04
+    raise_amount = 1.04 # static (class variable)
 
     def __init__(this, sFirst, sLast, fPay):
         this.first = sFirst
