@@ -268,7 +268,7 @@ print(emp1.__dict__)
 print(emp2.__dict__)
 """
 
-
+"""
 #4 Class Variables
 class Employee:
 
@@ -284,7 +284,7 @@ class Employee:
         return '{} {}'.format(this.first, this.last)
 
     def apply_raise(this):
-        this.pay = int(this.pay * this.raise_amount)
+        this.pay = float(this.pay * this.raise_amount)
 
 emp1 = Employee('Hossein', 'Oliabak', 64000)
 emp2 = Employee('Iman', 'Gh', 60000)
@@ -300,3 +300,24 @@ emp2.raise_amount = 1.05
 print('All employees raise amount:', Employee.raise_amount)
 print('emp1 raise amount', emp1.raise_amount)
 print('emp2 raise amount', emp2.raise_amount)
+"""
+
+
+#5 Class Variables
+class Employee:
+
+    num_of_emps = 0
+
+    def __init__(this, sFirst, sLast, fPay):
+        this.first = sFirst
+        this.last = sLast
+        this.pay = fPay
+        this.email = str.lower(sFirst) + '.' + str.lower(sLast) + '@company.com'
+
+        Employee.num_of_emps += 1
+
+print(Employee.num_of_emps)
+emp1 = Employee('Hossein', 'Oliabak', 64000)
+emp2 = Employee('Iman', 'Gh', 60000)
+print(Employee.num_of_emps)
+print(emp1.first)
