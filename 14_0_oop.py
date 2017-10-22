@@ -1,4 +1,7 @@
 '''
+Terminology:
+Attributes: data associated with a class
+Methods: functions associated with a class
 Using Objects
 It turns out we have been using objects all along in this class. Python provides
 us with many built-in objects. Here is some simple code where the first few lines
@@ -184,25 +187,14 @@ Let's look at another example:
 |        return self.health                    |
 +----------------------------------------------+
 Let's create instances of our class:
-char01 = character(“Zelda”, 10)          char02 = character(“Mario”, 8)
++---------------------------------+---------------------------------+
+|char01 = character(“Zelda”, 10)  |  char02 = character(“Mario”, 8) |
+|---------------------------------|---------------------------------|
+|Name: “Zelda”                    |  Name: “Mario”                  |
+|Health: 10                       |  Health: 8                      |
+|Inventory: []                    |  Inventory: []                  |
+|---------------------------------|---------------------------------|
+|grab(item)                       |  grab(item)                     |
+|get_health()                     |  get_health()                   |
++---------------------------------+---------------------------------+
 '''
-class PartyAnimal:
-   x = 0
-
-   def __init__(self):
-     print('I am constructed')
-
-   def party(self) :
-     self.x = self.x + 1
-     print('So far',self.x)
-
-   def __del__(self):
-     print('I am destructed', self.x)
-
-objAnimal = PartyAnimal()
-objAnimal.party()
-objAnimal.party()
-objAnimal = 42
-print('objAnimal contains',objAnimal)
-
-# Code: http://www.py4e.com/code3/party4.py
