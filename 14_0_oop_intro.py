@@ -393,7 +393,7 @@ print(emp1.email)
 """
 
 """
-#8 regular methods, class methods, and static methods (part 2: staticmethods)
+#8 regular methods, class methods, and static methods (part 3: staticmethods)
 '''
 Static methods don't pass anything automatically. They don't depend on any
 specific instance or class variable. We include them in the class because they
@@ -420,5 +420,65 @@ import datetime
 my_date = datetime.date(2016, 7, 11)
 print(Employee.is_workday(my_date))
 """
+
+"""
+#9 Inheritance - Creating Subclasses
+class Employee:
+
+    raise_amount = 1.04
+
+    def __init__(self, sFirst, sLast, fPay):
+        self.first = sFirst
+        self.last = sLast
+        self.pay = fPay
+        self.email = str.lower(sFirst) + '.' + str.lower(sLast) + '@company.com'
+
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+
+    def apply_raise(self):
+        self.pay = float(self.pay * self.raise_amount)
+
+class Developer(Employee):
+    pass
+
+dev1 = Developer('Iman', 'Gh', 60000)
+print('Before raise', dev1.pay)
+dev1.apply_raise()
+print('After raise:',dev1.pay)
+"""
+
+
+#10 Inheritance - Creating Subclasses
+class Employee:
+
+    raise_amount = 1.04
+
+    def __init__(self, sFirst, sLast, fPay):
+        self.first = sFirst
+        self.last = sLast
+        self.pay = fPay
+        self.email = str.lower(sFirst) + '.' + str.lower(sLast) + '@company.com'
+
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+
+    def apply_raise(self):
+        self.pay = float(self.pay * self.raise_amount)
+
+class Developer(Employee):
+
+    raise_amount = 1.10
+
+    def __init__(self, sFirst, sLast, fPay, sProgLang):
+        super().__init__(sFirst, sLast, fPay)
+        self.prog_lang = sProgLang
+
+
+dev1 = Developer('Iman', 'Gh', 60000, 'Python')
+dev2 = Developer('Mahbod', 'Zo', 60000, 'Java')
+
+print(dev1.fullname())
+print(dev1.prog_lang)
 
 # @ https://www.youtube.com/watch?v=ZDa-Z5JzLYM&list=PL-osiE80TeTsqhIuOqKhwlXsIBIdSeYtc
