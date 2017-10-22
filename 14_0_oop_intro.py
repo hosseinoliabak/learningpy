@@ -553,7 +553,7 @@ print(emp1.email)
 print(emp1.fullname)
 """
 
-"""
+
 #13 Property Decorators - Getters, Setters, and Deleters
 class Employee:
 
@@ -589,6 +589,6 @@ print(emp1.email)
 print(emp1.fullname)
 
 del emp1.fullname
-"""
+
 
 # @ https://www.youtube.com/watch?v=ZDa-Z5JzLYM&list=PL-osiE80TeTsqhIuOqKhwlXsIBIdSeYtc

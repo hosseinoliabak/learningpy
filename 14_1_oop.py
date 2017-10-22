@@ -21,3 +21,14 @@ Print the value vehicle_terrain for both vehicles
 '''
 class Vehicle:
     vehicle_terrain = "land"
+
+    def __ini__(self, iNumWheels, iNumPassengers, iMaxSpeed, itSpeed = 0):
+        self.numWheels = iNumWheels
+        self.numPassengers = iNumPassengers
+        self.maxSpeed = iMaxSpeed
+        self.speed = iSpeed
+
+    def current_speed(self):
+        return self.speed
+
+    def current_speed()
