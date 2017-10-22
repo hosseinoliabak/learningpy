@@ -322,5 +322,45 @@ emp2 = Employee('Iman', 'Gh', 60000)
 print(Employee.num_of_emps)
 print(emp1.first)
 """
-# Go deeper in OOP?
+
+"""
+#6 regular methods, class methods, and static methods (in #7)
+'''
+Regular methods (the most used methods): automatically take the instance as the
+first argument. and by convention we were calling this "self".
+Class methods: take the class as the first argument. we add @classmethod decorator
+to the top line of the method.
+'''
+
+class Employee:
+
+    raise_amount = 1.04
+
+    def __init__(this, sFirst, sLast, fPay):
+        this.first = sFirst
+        this.last = sLast
+        this.pay = fPay
+        this.email = str.lower(sFirst) + '.' + str.lower(sLast) + '@company.com'
+
+    def fullname(this):
+        return '{} {}'.format(this.first, this.last)
+
+    def apply_raise(this):
+        this.pay = float(this.pay * this.raise_amount)
+
+    @classmethod
+    def set_raise_amount(cls, fAmount):
+        cls.raise_amount = fAmount
+
+emp1 = Employee('Hossein', 'Oliabak', 64000)
+emp2 = Employee('Iman', 'Gh', 60000)
+
+Employee.set_raise_amount(1.05)
+
+print('All employees raise amount:', Employee.raise_amount)
+print('emp1 raise amount', emp1.raise_amount)
+print('emp2 raise amount', emp2.raise_amount)
+"""
+
+
 # @ https://www.youtube.com/watch?v=ZDa-Z5JzLYM&list=PL-osiE80TeTsqhIuOqKhwlXsIBIdSeYtc
