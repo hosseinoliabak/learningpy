@@ -324,7 +324,7 @@ print(emp1.first)
 """
 
 """
-#6 regular methods, class methods, and static methods (in #7)
+#6 regular methods, class methods, and static methods (part 1: classmethos)
 '''
 Regular methods (the most used methods): automatically take the instance as the
 first argument. and by convention we were calling this "self".
@@ -336,17 +336,17 @@ class Employee:
 
     raise_amount = 1.04
 
-    def __init__(this, sFirst, sLast, fPay):
-        this.first = sFirst
-        this.last = sLast
-        this.pay = fPay
-        this.email = str.lower(sFirst) + '.' + str.lower(sLast) + '@company.com'
+    def __init__(self, sFirst, sLast, fPay):
+        self.first = sFirst
+        self.last = sLast
+        self.pay = fPay
+        self.email = str.lower(sFirst) + '.' + str.lower(sLast) + '@company.com'
 
-    def fullname(this):
-        return '{} {}'.format(this.first, this.last)
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
 
-    def apply_raise(this):
-        this.pay = float(this.pay * this.raise_amount)
+    def apply_raise(self):
+        self.pay = float(self.pay * self.raise_amount)
 
     @classmethod
     def set_raise_amount(cls, fAmount):
@@ -361,6 +361,37 @@ print('All employees raise amount:', Employee.raise_amount)
 print('emp1 raise amount', emp1.raise_amount)
 print('emp2 raise amount', emp2.raise_amount)
 """
+
+"""
+#7 regular methods, class methods, and static methods (part 2: classmethods as
+#alternative constructors)
+'''
+Class methods as alternative constructors: use of classmethods in order to
+provide multiple of creating our objects
+'''
+class Employee:
+
+    def __init__(self, sFirst, sLast, fPay):
+        self.first = sFirst
+        self.last = sLast
+        self.pay = fPay
+        self.email = str.lower(sFirst) + '.' + str.lower(sLast) + '@company.com'
+
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+
+    @classmethod
+    def from_string(cls, emp_str):
+        first, last, pay = emp_str.split('-')
+        return cls(first, last, pay)
+
+emp_str_1 = 'Hossein-Oliabak-64000'
+emp_str_2 = 'Iman-Gh-60000'
+
+emp1 = Employee.from_string(emp_str_1)
+print(emp1.email)
+"""
+
 
 
 # @ https://www.youtube.com/watch?v=ZDa-Z5JzLYM&list=PL-osiE80TeTsqhIuOqKhwlXsIBIdSeYtc
