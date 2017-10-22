@@ -392,6 +392,33 @@ emp1 = Employee.from_string(emp_str_1)
 print(emp1.email)
 """
 
+"""
+#8 regular methods, class methods, and static methods (part 2: staticmethods)
+'''
+Static methods don't pass anything automatically. They don't depend on any
+specific instance or class variable. We include them in the class because they
+have some logical connection with the class.
+'''
+class Employee:
 
+    def __init__(self, sFirst, sLast, fPay):
+        self.first = sFirst
+        self.last = sLast
+        self.pay = fPay
+        self.email = str.lower(sFirst) + '.' + str.lower(sLast) + '@company.com'
+
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+
+    @staticmethod
+    def is_workday(day):
+        if day.weekday() == 5 or day.weekday() == 6:
+            return False
+        return True
+
+import datetime
+my_date = datetime.date(2016, 7, 11)
+print(Employee.is_workday(my_date))
+"""
 
 # @ https://www.youtube.com/watch?v=ZDa-Z5JzLYM&list=PL-osiE80TeTsqhIuOqKhwlXsIBIdSeYtc
