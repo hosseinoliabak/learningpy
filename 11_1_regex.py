@@ -38,9 +38,9 @@ converting the extracted strings to integers and summing up the integers.
 '''
 import re
 iSum = 0
+sFileName = "regex_sum_39125.txt"
 try:
-    sFileName = "regex_sum_39125.txt"
-    flHand = open(sFileName)
+        flHand = open(sFileName)
 except:
     print('There is no"', sFileName,'"file in the same folder as this script.')
 else:
