@@ -43,10 +43,15 @@ def add_people(sName, iAge):
     with conn:
         c.execute("INSERT INTO Ages VALUES (:name, :age)", {'name':sName, 'age':iAge})
 
-dPeople = {'Oz': 25, 'Noor': 31, 'Praise': 22, 'Kerris': 26, 'Louise': 19, 'Ismaeel': 17 }
+# dPeople = {'Oz': 25, 'Noor': 31, 'Praise': 22, 'Kerris': 26, 'Louise': 19, 'Ismaeel': 17 }
+# for keyName, valueAge in dPeople.items():
+#     add_people(keyName, valueAge)
 
-for keyName, valueAge in dPeople.items():
-    add_people(keyName, valueAge)
+# Or what I prefer
+lPeople = [('Oz', 25), ('Noor', 31), ('Praise', 22), ('Kerris', 26), ('Louise', 19), ('Ismaeel', 17)]
+for tItem in lPeople:
+    sName, iAge = tItem
+    add_people(sName, iAge)
 
 c.execute("SELECT hex(name || age) AS X FROM Ages ORDER BY X")
 print(c.fetchall())
