@@ -45,7 +45,8 @@ except:
     print('There is no"', sFileName,'"file in the same folder as this script.')
 else:
     sFileContent = flHand.read()
-    lNumbers = re.findall('[0-9]+',sFileContent)
+    lNumbers = re.findall('[0-9]+', sFileContent)
+    #print(lNumbers)
     for i in lNumbers:
         iSum = iSum + int(i)
     print(iSum)
