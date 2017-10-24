@@ -30,7 +30,7 @@ Hint: The top organizational count is 536.
 import re
 import sqlite3
 
-conn = sqlite3.connect('emaildb.db')
+conn = sqlite3.connect('emaildb.sqlite')
 c = conn.cursor()
 c.execute("DROP TABLE IF EXISTS Counts")
 c.execute("CREATE TABLE Counts (org TEXT, count INTEGER)")
