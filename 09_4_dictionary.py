@@ -10,16 +10,29 @@ the most prolific committer.
 Desired Output:
 cwen@iupui.edu 5
 '''
-dWords = dict()
-try:
-    flHand = open("mbox-short.txt")
-except:
-    print('There is no "mbox-short.txt" file in the same folder as this script.')
-else:
-    for sLine in flHand:
-        if not sLine.startswith('From '):
-            continue
-        lWords = sLine.split()
-        dWords[lWords[1]] = dWords.get(lWords[1], 0) + 1
-    sMax = max(dWords, key = dWords.get)
-    print (sMax, dWords[sMax])
+
+'''
+dWords = {}
+flHand = open("mbox-short.txt")
+for sLine in flHand:
+    if not sLine.startswith('From '):
+        continue
+    lWords = sLine.split()
+    dWords[lWords[1]] = dWords.get(lWords[1], 0) + 1
+sMax = max(dWords, key = dWords.get)
+print(sMax, dWords[sMax])
+#print(dWords)
+'''
+# Use this code for autograder
+dWords = {}
+flHand = open("mbox-short.txt")
+for sLine in flHand:
+    if not sLine.startswith('From '):
+        continue
+    lWords = sLine.split()
+    if lWords[1] not in dWords:
+        dWords[lWords[1]] = 1
+    else:
+        dWords[lWords[1]] += 1
+iMaxtCommits, sMaxCommitter = max([(value, key) for (key, value) in dWords.items()])
+print(sMaxCommitter, iMaxtCommits)
