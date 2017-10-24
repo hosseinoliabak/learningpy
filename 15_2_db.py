@@ -27,3 +27,28 @@ results of operations that have not yet been committed.
 
 Hint: The top organizational count is 536.
 '''
+import re
+import sqlite3
+
+conn = sqlite3.connect('emaildb.db')
+c = conn.cursor()
+c.execute("DROP TABLE IF EXISTS Counts")
+c.execute("CREATE TABLE Counts (org TEXT, count INTEGER)")
+def add_email(sEmail, iCount):
+    with conn:
+        c.execute("INSERT INTO Counts VALUES (:e, :c)", {'e':sEmail, 'c':iCount})
+
+
+dOrgStatistics = dict()
+sFileName = 'mbox.txt'
+flHand = open(sFileName)
+sFileContent = flHand.read()
+lOrgs = re.findall('From .*@([^ ]*)', sFileContent)
+for sOrg in lOrgs:
+    dOrgStatistics[sOrg] = dOrgStatistics.get(sOrg, 0) + 1
+
+for keyEmail, valueCount in dOrgStatistics.items():
+    add_email(keyEmail, valueCount)
+
+conn.commit()
+conn.close()
