@@ -21,8 +21,8 @@ The following is a summary of the main tasks of the Assignment:
 Objective
 The goal of this Lab is to have your fist steps in implementing network protocol
 from its technical specifications. Generally, the specifications of network
-protocol (for example FTP for file transfer and NTP for time synchronization) are
-provided by standardization organizations like IETF (http://www.ietf.org).
+protocol (for example FTP for file transfer and NTP for time synchronization)
+are provided by standardization organizations like IETF (http://www.ietf.org).
 
 (A protocol is a system of rules that allow two or more entities of a
 communications system to transmit information via any kind of variation of a
@@ -131,8 +131,8 @@ You should receive the response depicted in the output sample. Similarly, you
 can explore HTTP protocol operations without the need to program.
 
 HTTP Client Library Implementation
-After getting a deeper understanding of the flow of HTTP GET and POST operations,
-you are requested to implement your HTTP client using TCP Sockets.
+After getting a deeper understanding of the flow of HTTP GET and POST
+operations, you are requested to implement your HTTP client using TCP Sockets.
 The programming library implements only a small subset of HTTP specifications.
 In other words, we expect that your HTTP library supports the following features:
 1. GET operation
