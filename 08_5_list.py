@@ -54,5 +54,5 @@ else:
         iCount += 1
         lWrodsList = sWords.split()
         print(lWrodsList[1])
-    print('There were',iCount,'lines in the file with From as the first word')
+    print('There were', iCount, 'lines in the file with From as the first word')
     flHand.close()
