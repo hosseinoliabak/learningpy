@@ -113,14 +113,14 @@ for entry in lXml:
         count = lookup(entry, 'Play Count')
         rating = lookup(entry, 'Rating')
         length = lookup(entry, 'Total Time')
+        genre = lookup(entry, 'Genre')
 
-        if name is None or artist is None or album is None :
+        if name is None or artist is None or album is None or genre is None:
             continue
 
         c.execute('''INSERT OR IGNORE INTO Artist (name)
             VALUES ( ? )''', ( artist, ))
         c.execute('SELECT id FROM Artist WHERE name = ? ', (artist, ))
-
         artist_id = c.fetchone()[0]
 
         c.execute('''INSERT OR IGNORE INTO Album (title, artist_id)
@@ -128,9 +128,14 @@ for entry in lXml:
         c.execute('SELECT id FROM Album WHERE title = ? ', (album, ))
         album_id = c.fetchone()[0]
 
+        c.execute('''INSERT OR IGNORE INTO Genre (name)
+            VALUES ( ? )''', ( genre, ))
+        c.execute('SELECT id FROM Genre WHERE name = ? ', (genre, ))
+        genre_id = c.fetchone()[0]
+
         c.execute('''INSERT OR REPLACE INTO Track
-        (title, album_id, len, rating, count)
-        VALUES ( ?, ?, ?, ?, ? )''', (name, album_id, length, rating, count))
+        (title, album_id, genre_id, len, rating, count)
+        VALUES ( ?, ?, ?, ?, ?, ? )''', (name, album_id, genre_id, length, rating, count))
 
 conn.commit()
 conn.close()
