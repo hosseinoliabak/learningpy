@@ -64,17 +64,4 @@ with open("welcome.txt", "r") as myfile:
 Notice, that we didn't have to write "file.close()". That will automatically be
 called. That is one of the advantages of using the with statement to open files.
 The with statement is an example of working with context managers.
-
-Example combining exception handling with a while loop. The loop keeps iterating
-as long as there is an exception. This type of construct could be used with
-validation routines:
-
-while True:
-    try:
-        filename = input("Enter a file name to open:")
-        f = open(filename, 'r')
-    except Exception as e:
-        print("Can't open the file: ", e)
-    else:
-        break
 '''
