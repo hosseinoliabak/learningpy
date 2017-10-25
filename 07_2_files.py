@@ -21,15 +21,16 @@ except: # handle_the_exception_somehow()
 finally: # something_we_always_need_to_do()
     fSum = 0
     iCount = 0
-    for line in flHand:
-        if not line.startswith('X-DSPAM-Confidence:') :
-            continue
-        iAtPos = line.find(':')
-        sNumber = line[iAtPos+1 : ]
-        fNumber = float(sNumber)
-        fSum = fSum + fNumber
-        iCount+=1
-    print('Average spam confidence:',fSum/iCount)
+    with flHand:
+        for line in flHand:
+            if not line.startswith('X-DSPAM-Confidence:') :
+                continue
+            iAtPos = line.find(':')
+            sNumber = line[iAtPos+1 : ]
+            fNumber = float(sNumber)
+            fSum = fSum + fNumber
+            iCount+=1
+        print('Average spam confidence:',fSum/iCount)
 
 
 '''
