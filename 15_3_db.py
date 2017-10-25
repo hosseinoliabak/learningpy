@@ -102,8 +102,8 @@ def lookup(d, sKey):
 
 fHandle = open('Library.xml')
 sXml = fHandle.read()
-xmlElementTreeObj = ET.fromstring(sXml)
-lXml = xmlElementTreeObj.findall('dict/dict/dict')
+xmlETObj = ET.fromstring(sXml)
+lXml = xmlETObj.findall('dict/dict/dict')
 for entry in lXml:
         if (lookup(entry, 'Track ID') is None):
             continue
