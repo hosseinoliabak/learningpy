@@ -7,7 +7,7 @@
 Introduction
 In this assignment, you will implement a simple HTTP client application and
 experiment it in real HTTP Servers (web servers). Before starting on this
-assignment, it is strongly recommend that you read the provided programming
+assignment, it is strongly recommended that you read the provided programming
 samples and review the associated course materials.
 
 Outline
