@@ -13,6 +13,17 @@ You can download the file from
 www.py4e.com/code3/mbox-short.txt
 '''
 # My variables start with: s -> string; i -> integer; f -> float; fl -> file
+
+# Code 1
+with open('mbox-short.txt') as flFile:
+    for line in flFile:
+        print(line.upper())
+
+
+# Code 2
+'''
 flFile = open('mbox-short.txt')
 for line in flFile:
     print(line.upper())
+flFile.close()
+'''
