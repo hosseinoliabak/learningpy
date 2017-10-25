@@ -55,7 +55,7 @@ sslContext = ssl.create_default_context()
 sslContext.check_hostname = False
 sslContext.verify_mode = ssl.CERT_NONE
 
-sUrl = input('Enter location:')
+sUrl = input('Enter location [http://py4e-data.dr-chuck.net/comments_39129.xml]: ')
 try:
     byteHttp = urlopen(sUrl, context = sslContext)
 except:
@@ -63,6 +63,6 @@ except:
     byteHttp = urlopen(sUrl, context = sslContext)
 finally:
     sHttp = byteHttp.read().decode()
-    xmlElementTreeObj = ET.fromstring(sHttp)
-    xmlElementList = xmlElementTreeObj.findall('.//count')
+    xmlETObj = ET.fromstring(sHttp)
+    xmlElementList = xmlETObj.findall('.//count')
     print(sum([int(xmlElement.text) for xmlElement in xmlElementList]))
