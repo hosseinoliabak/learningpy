@@ -7,7 +7,7 @@ should be this:
 +--------------------------------------+
 ﻿User Name	Display Name
 chris@contoso.com	Chris Green
-ben@contoso.com	Ben Andrews
+ben@contoso.com Ben Andrews
 david@contoso.com	David Longmuir
 cynthia@contoso.com	Cynthia Carey
 melissa@contoso.com	Melissa MacBeth
