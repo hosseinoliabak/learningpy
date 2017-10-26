@@ -42,7 +42,8 @@ sockSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sHost = 'data.pr4e.org'
 iPort = 80
 sockSocket.connect((sHost, iPort))
-byteCmd = 'GET http://data.pr4e.org/intro-short.txt HTTP/1.0\r\n\r\n'.encode()
+sRequestLine = 'GET http://data.pr4e.org/intro-short.txt HTTP/1.0'
+byteCmd = (sRequestLine + '\r\n\r\n').encode()
 sockSocket.send(byteCmd) # method send() to transmit the TCP message
 
 while True:
