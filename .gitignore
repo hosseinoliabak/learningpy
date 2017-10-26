@@ -3,3 +3,4 @@
 *.sqlite
 sample-email.csv
 test*.txt
+*.log
