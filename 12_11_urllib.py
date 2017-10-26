@@ -9,6 +9,7 @@ Use the info() method to print all the headers
 Can you tell how many times the string "BBC" is found in the code?
 """
 import urllib.request, re
+# by defaultthis is a GET request:
 httpResponse = urllib.request.urlopen('http://www.bbc.com/news')
 sHtml = httpResponse.read().decode()
 lHtml = sHtml.split('\n')
