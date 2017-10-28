@@ -19,17 +19,17 @@ you need to use are: writehedear(), and writerow()
 import csv
 with open('sample-csv.csv') as csv_file:
 
-    fieldnames = ['User Name', 'Display Name']
+    lFieldnames = ['User Name', 'Display Name']
     csv_reader = csv.DictReader(csv_file)
 
     with open('sample-email.csv', 'w') as new_file:
 
-        fieldnames = ['User Name', 'Display Name']
-        csv_writer = csv.DictWriter(new_file, fieldnames=fieldnames, delimiter='\t')
-        #fieldnames parameter is mandatory for DictWriter
+        lFieldnames = ['User Name', 'Display Name']
+        csv_writer = csv.DictWriter(new_file, fieldnames=lFieldnames, delimiter='\t')
+        #lFieldnames parameter is mandatory for DictWriter
 
         csv_writer.writeheader()
 
         for line in csv_reader:
-            to_csv = {fieldnames[0]: line['User Name'], fieldnames[1]: line['Display Name']}
-            csv_writer.writerow(to_csv)
+            dToCsv = {lFieldnames[0]: line['User Name'], lFieldnames[1]: line['Display Name']}
+            csv_writer.writerow(dToCsv)
