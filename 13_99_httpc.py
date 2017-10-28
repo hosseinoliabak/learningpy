@@ -325,7 +325,7 @@ Comp6461 – Fall 2017 - Lab Assignment # 1 Page 11
 [4] cURL: https://curl.haxx.se.
 [5] Telnet: https://en.wikipedia.org/wiki/Telnet.
 '''
-import argparse, urllib.request, urllib.parse, json
+import argparse, urllib.request, urllib.parse, json, re
 
 def getArguments():
 
@@ -420,9 +420,8 @@ def convertStringDictToDict(stringData):
     json_acceptable_string = stringData.replace("'", '"')
     return json.loads(json_acceptable_string)
 
-
-def postUrl(sUrl, bVerbose, dValues):
-    #dValues = {'k':'v'}
+def postUrl(sUrl, bVerbose, sValues):
+    dValues = convertStringDictToDict(sValues)
     strData = urllib.parse.urlencode(dValues)
     print(strData)
     byteData = strData.encode()
@@ -438,11 +437,12 @@ def postUrl(sUrl, bVerbose, dValues):
     return verboseHTML, sResponse
 
 if method == 'get':
+
     header, content = getUrl(url, verbose)
     print(header, content)
 
 if method == 'post':
-#    header, content= postUrl(url, verbose, data)
-#     print(header, content)
+    header, content= postUrl(url, verbose, data)
+    print(header, content)
 
-    print(type(convertStringDictToDict(data)), convertStringDictToDict(data))
+    # print(type(convertStringDictToDict(data)), convertStringDictToDict(data))
