@@ -325,42 +325,132 @@ Comp6461 – Fall 2017 - Lab Assignment # 1 Page 11
 [4] cURL: https://curl.haxx.se.
 [5] Telnet: https://en.wikipedia.org/wiki/Telnet.
 '''
-import argparse
+import argparse, urllib.request, urllib.parse
 
-parser = argparse.ArgumentParser(description='cURL-like Command Line Implementation')
-parser.add_argument('-x', '--length', type=float, metavar='', required=True, help='Length of the rectangle/cube')
-parser.add_argument('-y', '--width', type=float, metavar='', required=True, help='Width of the rectangle/cube')
-parser.add_argument('-z', '--height', type=float, metavar='', help='Height of the rectangle/cube')
+# +----------------------------------------------------------------+
+# |httpc (get|post) [-v] (-h "k:v")* [-d inline-data] [-f file] URL|
+# +----------------------------------------------------------------+
 
-group = parser.add_mutually_exclusive_group()
-group.add_argument('-q', '--quiet', action='store_true', help='print quiet')
-group.add_argument('-v', '--verbose', action='store_true', help='print verbose')
-args = parser.parse_args()
+# parser = argparse.ArgumentParser(
+# prog='httpc.py',
+# description='httpc is a curl-like application but supports HTTP protocol only. Usage: httpc command [arguments]',
+# add_help=False,
+# argument_default=argparse.SUPPRESS
+# )
+__author__ = 'Hossein Oliabak'
 
-def area(length, width):
-    area = length * width
-    resultString = "Area of the rectangle"
-    return area, resultString
 
-def volume(length, width, height):
-    vol = length * width * height
-    resultString = "Volume of the cube"
-    return vol, resultString
+def getArguments():
 
-if __name__ == '__main__':
-    if not args.height:
-        result = area(args.length, args.width)[0]
-        resultString = area(args.length, args.width)[1]
-        resultVerbose = resultString + ' with length {} and width {} is:'.format(args.length, args.width)
-    else:
-        result = volume(args.length, args.width, args.height)[0]
-        resultString = volume(args.length, args.width, args.height)[1]
-        resultVerbose = resultString + ' with length {}, width {}, and height {} is:'.format(args.length, args.width, args.height)
+    # Assign help to the function
+    '''This function parses and returns arguments passed in'''
 
-    if args.quiet:
-        print (result)
+    # Assign description to the help doc
+    parser = argparse.ArgumentParser(
+        description='httpc is a curl-like application but supports HTTP protocol only.')
 
-    elif args.verbose:
-        print(resultVerbose, result)
-    else:
-        print(resultString, result)
+    ##### Make a verbose help #####
+    # parser.add_argument('help', default = None, nargs='?')
+    # subHelp = parser.add_subparsers()
+    # getHelp = subHelp.add_parser('get', help='HELP GET')
+    # postHelp = subHelp.add_parser('post', help='HELP POST')
+
+    # Add positional arguments get/post
+    methodHelp = '''get/post options are used to execute GET/POST requests
+    respectively. post should have either -d or -f but not both. However, get
+    option should not used with the options -d or -f.'''
+    lChoices = ['get', 'post']
+    parser.add_argument('method', choices=lChoices, default = None, nargs='?')
+
+    # Add argument header
+    headerHelp = '''To pass the headers value to your HTTP operation, you could
+    use -H option. Set the header of the request in the "key:value" format.
+    Notice that; you can have multiple headers by having the -H option before
+    each header parameter. i. g. httpc -H key1:value2 -H key2:value2 ...'''
+    parser.add_argument('-H', '--header', help=headerHelp, action='append')
+
+    # Add argument inline-data
+    dataHelp = '''-d gives the user the possibility to associate the body of
+    the HTTP Request with the inline data, meaning a set of characters for
+    standard input.'''
+    parser.add_argument('-d', '--data', help=dataHelp)
+
+    # Add argument file
+    fileHelp = '''  Similarly to -d, -f associate the body of the HTTP Request
+    with the data from a given file.'''
+    parser.add_argument(
+        '-f', '--filename', help=fileHelp, type=argparse.FileType('r')) # keep this aside: type=open
+
+    # Add positional argument URL
+    urlHelp = '''URL determines the targeted HTTP server. It could contain
+    parameters of the HTTP operation. For example, the URL
+    'https://www.google.ca/?q=hello+world' includes the parameter q with
+    "hello world" value.'''
+    parser.add_argument('URL', help=urlHelp)
+
+    # Add mutually exclusive group: verbose and quiet
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument(
+    '-q', '--quiet', action='store_true', help='print quiet')
+    group.add_argument(
+    '-v', '--verbose', action='store_true', help='print verbose')
+
+
+
+
+    # Argparse Namespace
+    args = parser.parse_args()
+
+    # Assign args to variables
+    method = args.method
+    header = args.header
+    data = args.data
+    filename = args.filename
+    verbose = args.verbose
+    quiet = args.quiet
+    url = args.URL
+
+    # parser.print_help()
+    # Return all variable values
+    return method, header, data, filename, verbose, quiet, url
+
+# Run get_args()
+# get_args()
+
+# Match return values from get_arguments()
+# and assign to their respective variables
+method, header, data, filename, verbose, quiet, url = getArguments()
+print(method, header, data, filename, verbose, quiet, url)
+
+def getUrl(sUrl, bVerbose):
+    httpResponse = urllib.request.urlopen(sUrl)
+    sHtml = httpResponse.read().decode()
+
+    verboseHTML = None
+    if bVerbose:
+        verboseHTML = httpResponse.info()
+
+    return verboseHTML, sHtml
+
+def postUrl(sUrl, bVerbose, dValues):
+    #dValues = {'k':'v'}
+    strData = urllib.parse.urlencode(dValues)
+    byteData = strData.encode()
+    req = urllib.request.Request(sUrl, byteData)
+    httpResponse = urllib.request.urlopen(req)
+    byteResponse = httpResponse.read()
+    sResponse = byteResponse.decode()
+
+    verboseHTML = None
+    if bVerbose:
+        verboseHTML = httpResponse.info()
+
+    return verboseHTML, sResponse
+
+if method == 'get':
+    header, content = getUrl(url, verbose)
+    print(header, content)
+
+if method == 'post':
+    header, content = postUrl(url, verbose)
+    print(header, content)
