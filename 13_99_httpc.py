@@ -325,20 +325,7 @@ Comp6461 – Fall 2017 - Lab Assignment # 1 Page 11
 [4] cURL: https://curl.haxx.se.
 [5] Telnet: https://en.wikipedia.org/wiki/Telnet.
 '''
-import argparse, urllib.request, urllib.parse
-
-# +----------------------------------------------------------------+
-# |httpc (get|post) [-v] (-h "k:v")* [-d inline-data] [-f file] URL|
-# +----------------------------------------------------------------+
-
-# parser = argparse.ArgumentParser(
-# prog='httpc.py',
-# description='httpc is a curl-like application but supports HTTP protocol only. Usage: httpc command [arguments]',
-# add_help=False,
-# argument_default=argparse.SUPPRESS
-# )
-__author__ = 'Hossein Oliabak'
-
+import argparse, urllib.request, urllib.parse, json
 
 def getArguments():
 
@@ -347,6 +334,7 @@ def getArguments():
 
     # Assign description to the help doc
     parser = argparse.ArgumentParser(
+        prog='httpc.py',
         description='httpc is a curl-like application but supports HTTP protocol only.')
 
     ##### Make a verbose help #####
@@ -360,7 +348,7 @@ def getArguments():
     respectively. post should have either -d or -f but not both. However, get
     option should not used with the options -d or -f.'''
     lChoices = ['get', 'post']
-    parser.add_argument('method', choices=lChoices, default = None, nargs='?')
+    parser.add_argument('method', choices=lChoices, help=methodHelp, default = 'get', nargs='?')
 
     # Add argument header
     headerHelp = '''To pass the headers value to your HTTP operation, you could
@@ -396,8 +384,6 @@ def getArguments():
     '-v', '--verbose', action='store_true', help='print verbose')
 
 
-
-
     # Argparse Namespace
     args = parser.parse_args()
 
@@ -410,15 +396,13 @@ def getArguments():
     quiet = args.quiet
     url = args.URL
 
-    # parser.print_help()
     # Return all variable values
     return method, header, data, filename, verbose, quiet, url
 
 # Run get_args()
 # get_args()
 
-# Match return values from get_arguments()
-# and assign to their respective variables
+# Match return values from getArguments() and assign to their respective variables
 method, header, data, filename, verbose, quiet, url = getArguments()
 print(method, header, data, filename, verbose, quiet, url)
 
@@ -432,9 +416,15 @@ def getUrl(sUrl, bVerbose):
 
     return verboseHTML, sHtml
 
+def convertStringDictToDict(stringData):
+    json_acceptable_string = stringData.replace("'", '"')
+    return json.loads(json_acceptable_string)
+
+
 def postUrl(sUrl, bVerbose, dValues):
     #dValues = {'k':'v'}
     strData = urllib.parse.urlencode(dValues)
+    print(strData)
     byteData = strData.encode()
     req = urllib.request.Request(sUrl, byteData)
     httpResponse = urllib.request.urlopen(req)
@@ -452,5 +442,7 @@ if method == 'get':
     print(header, content)
 
 if method == 'post':
-    header, content = postUrl(url, verbose)
-    print(header, content)
+#    header, content= postUrl(url, verbose, data)
+#     print(header, content)
+
+    print(type(convertStringDictToDict(data)), convertStringDictToDict(data))
