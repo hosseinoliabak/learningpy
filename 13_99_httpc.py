@@ -423,7 +423,6 @@ def convertStringDictToDict(stringData):
 def postUrl(sUrl, bVerbose, sValues):
     dValues = convertStringDictToDict(sValues)
     strData = urllib.parse.urlencode(dValues)
-    print(strData)
     byteData = strData.encode()
     req = urllib.request.Request(sUrl, byteData)
     httpResponse = urllib.request.urlopen(req)
