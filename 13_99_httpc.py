@@ -404,9 +404,19 @@ def getArguments():
 # Run get_args()
 # get_args()
 
+
 # Match return values from getArguments() and assign to their respective variables
 method, header, data, filename, verbose, quiet, url = getArguments()
+
+def convertListDictToDict(lList):
+    return {sItem.split(':')[0]:sItem.split(':')[1] for sItem in lList}
+
+if header:
+    header = convertListDictToDict(header)
+
 print(method, header, data, filename, verbose, quiet, url)
+
+
 
 def getUrl(sUrl, bVerbose, bQuiet):
 
@@ -452,7 +462,7 @@ def postUrl(sUrl, dValues, bVerbose, bQuiet):
     return htmlHeader, sResponse
 
 if method == 'get':
-    
+
     if(data or filename):
         print('-d or -f option only can be used with POST method not GET')
     else:
