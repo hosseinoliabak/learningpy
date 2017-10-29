@@ -357,17 +357,19 @@ def getArguments():
     each header parameter. i. g. httpc -H key1:value2 -H key2:value2 ...'''
     parser.add_argument('-H', '--header', help=headerHelp, action='append')
 
-    # Add argument inline-data
+    # Add arguments data either of -d or -f
+    # -d
+    dataGroup = parser.add_mutually_exclusive_group()
     dataHelp = '''-d gives the user the possibility to associate the body of
     the HTTP Request with the inline data, meaning a set of characters for
     standard input.'''
-    parser.add_argument('-d', '--data', help=dataHelp)
+    dataGroup.add_argument('-d', '--data', help=dataHelp)
 
-    # Add argument file
+    # -f
     fileHelp = '''  Similarly to -d, -f associate the body of the HTTP Request
     with the data from a given file.'''
-    parser.add_argument(
-        '-f', '--filename', help=fileHelp, type=argparse.FileType('r')) # keep this aside: type=open
+    dataGroup.add_argument(
+        '-f', '--filename', help=fileHelp, type=str) # keep this aside: type=open
 
     # Add positional argument URL
     urlHelp = '''URL determines the targeted HTTP server. It could contain
@@ -407,6 +409,7 @@ method, header, data, filename, verbose, quiet, url = getArguments()
 print(method, header, data, filename, verbose, quiet, url)
 
 def getUrl(sUrl, bVerbose):
+
     httpResponse = urllib.request.urlopen(sUrl)
     sHtml = httpResponse.read().decode()
 
@@ -420,8 +423,12 @@ def convertStringDictToDict(stringData):
     json_acceptable_string = stringData.replace("'", '"')
     return json.loads(json_acceptable_string)
 
-def postUrl(sUrl, bVerbose, sValues):
-    dValues = convertStringDictToDict(sValues)
+def readFile(sFilename):
+    with open(sFilename) as flFile:
+        sFileContent = flFile.read()
+    return sFileContent.rstrip()
+
+def postUrl(sUrl, bVerbose, dValues):
     strData = urllib.parse.urlencode(dValues)
     byteData = strData.encode()
     req = urllib.request.Request(sUrl, byteData)
@@ -436,12 +443,24 @@ def postUrl(sUrl, bVerbose, sValues):
     return verboseHTML, sResponse
 
 if method == 'get':
-
-    header, content = getUrl(url, verbose)
-    print(header, content)
+    if(data or filename):
+        print('-d or -f option only can be used with POST method not GET')
+    else:
+        header, content = getUrl(url, verbose)
+        print(header, content)
 
 if method == 'post':
-    header, content= postUrl(url, verbose, data)
+    if filename:
+        sPostData = (convertStringDictToDict(readFile(filename)))
+    elif data:
+        sPostData = (convertStringDictToDict(data))
+    else:
+        sPostData = ''
+
+    header, content= postUrl(url, verbose, sPostData)
     print(header, content)
+
+
+
 
     # print(type(convertStringDictToDict(data)), convertStringDictToDict(data))
