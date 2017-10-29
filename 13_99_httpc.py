@@ -385,6 +385,10 @@ def getArguments():
     group.add_argument(
     '-v', '--verbose', action='store_true', help='prints header and body')
 
+    parser.add_argument(
+    '-o', '--output',
+    help='Directs the output to a name of your choice',
+    type=argparse.FileType('w'))
 
     # Argparse Namespace
     args = parser.parse_args()
@@ -397,12 +401,13 @@ def getArguments():
     verbose = args.verbose
     quiet = args.quiet
     url = args.URL
+    output = args.output
 
     # Return all variable values
-    return method, header, data, filename, verbose, quiet, url
+    return method, header, data, filename, verbose, quiet, url, output
 
 # Match return values from getArguments() and assign to their respective variables
-method, header, data, filename, verbose, quiet, url = getArguments()
+method, header, data, filename, verbose, quiet, url, output = getArguments()
 
 def convertListDictToDict(lList):
     return {sItem.split(':')[0]:sItem.split(':')[1] for sItem in lList}
@@ -412,7 +417,7 @@ if header:
 else:
     header = dict()
 
-print(method, header, data, filename, verbose, quiet, url)
+# print(method, header, data, filename, verbose, quiet, url, output) # debugging
 
 
 def getUrl(sUrl, dHeaders, bVerbose, bQuiet):
@@ -465,7 +470,6 @@ if method == 'get':
         print('-d or -f option only can be used with POST method not GET')
     else:
         header, content = getUrl(url, header, verbose, quiet)
-        print(header, content)
 
 if method == 'post':
 
@@ -477,4 +481,10 @@ if method == 'post':
         sPostData = ''
 
     header, content= postUrl(url, header, sPostData, verbose, quiet)
+
+if output:
+    output.write(str(header))
+    output.write(str(content))
+    print(output.name,'file created!')
+else:
     print(header, content)
