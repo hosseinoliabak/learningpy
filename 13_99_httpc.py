@@ -422,18 +422,19 @@ else:
 
 def getUrl(sUrl, dHeaders, bVerbose, bQuiet):
 
-    htmlHeader = ''
+    httpHeader = ''
     sHtml = ''
     req = urllib.request.Request(sUrl, headers=dHeaders)
     httpResponse = urllib.request.urlopen(req)
+    iHttpCode = httpResponse.getcode()
 
     if bVerbose or bQuiet:
-        htmlHeader = httpResponse.info()
+        httpHeader = httpResponse.info()
 
     if not bQuiet:
         sHtml = httpResponse.read().decode()
 
-    return htmlHeader, sHtml
+    return httpHeader, sHtml, iHttpCode
 
 def convertStringDictToDict(stringData):
 
@@ -448,28 +449,29 @@ def readFile(sFilename):
 
 def postUrl(sUrl, dHeaders, dValues, bVerbose, bQuiet):
 
-    htmlHeader = ''
-    sResponse = ''
+    httpHeader = None
+    sResponse = None
     strData = urllib.parse.urlencode(dValues)
     byteData = strData.encode()
     req = urllib.request.Request(sUrl, byteData, headers=dHeaders)
     httpResponse = urllib.request.urlopen(req)
+    iHttpCode = httpResponse.getcode()
 
     if bVerbose or bQuiet:
-        htmlHeader = httpResponse.info()
+        httpHeader = httpResponse.info()
 
     if not bQuiet:
         byteResponse = httpResponse.read()
         sResponse = byteResponse.decode()
 
-    return htmlHeader, sResponse
+    return httpHeader, sResponse, iHttpCode
 
 if method == 'get':
 
     if(data or filename):
         print('-d or -f option only can be used with POST method not GET')
     else:
-        header, content = getUrl(url, header, verbose, quiet)
+        header, content, httpCode = getUrl(url, header, verbose, quiet)
 
 if method == 'post':
 
@@ -480,11 +482,18 @@ if method == 'post':
     else:
         sPostData = ''
 
-    header, content= postUrl(url, header, sPostData, verbose, quiet)
+    header, content, httpCode = postUrl(url, header, sPostData, verbose, quiet)
 
 if output:
-    output.write(str(header))
-    output.write(str(content))
+    if header:
+        output.write(str(header))
+    if content:
+        output.write(str(content))
     print(output.name,'file created!')
-else:
-    print(header, content)
+
+if not output:
+    if header:
+        print(header)
+    if content:
+        print(content)
+        print('Client HTTP Response Code:', httpCode)
