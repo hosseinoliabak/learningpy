@@ -459,8 +459,3 @@ if method == 'post':
 
     header, content= postUrl(url, verbose, sPostData)
     print(header, content)
-
-
-
-
-    # print(type(convertStringDictToDict(data)), convertStringDictToDict(data))
