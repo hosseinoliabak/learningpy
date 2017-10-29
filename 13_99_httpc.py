@@ -381,9 +381,9 @@ def getArguments():
     # Add mutually exclusive group: verbose and quiet
     group = parser.add_mutually_exclusive_group()
     group.add_argument(
-    '-q', '--quiet', action='store_true', help='print quiet')
+    '-q', '--quiet', action='store_true', help='only prints header')
     group.add_argument(
-    '-v', '--verbose', action='store_true', help='print verbose')
+    '-v', '--verbose', action='store_true', help='prints header and body')
 
 
     # Argparse Namespace
@@ -408,48 +408,59 @@ def getArguments():
 method, header, data, filename, verbose, quiet, url = getArguments()
 print(method, header, data, filename, verbose, quiet, url)
 
-def getUrl(sUrl, bVerbose):
+def getUrl(sUrl, bVerbose, bQuiet):
 
+    htmlHeader = ''
+    sHtml = ''
     httpResponse = urllib.request.urlopen(sUrl)
-    sHtml = httpResponse.read().decode()
 
-    verboseHTML = None
-    if bVerbose:
-        verboseHTML = httpResponse.info()
+    if bVerbose or bQuiet:
+        htmlHeader = httpResponse.info()
 
-    return verboseHTML, sHtml
+    if not bQuiet:
+        sHtml = httpResponse.read().decode()
+
+    return htmlHeader, sHtml
 
 def convertStringDictToDict(stringData):
+
     json_acceptable_string = stringData.replace("'", '"')
     return json.loads(json_acceptable_string)
 
 def readFile(sFilename):
+
     with open(sFilename) as flFile:
         sFileContent = flFile.read()
     return sFileContent.rstrip()
 
-def postUrl(sUrl, bVerbose, dValues):
+def postUrl(sUrl, dValues, bVerbose, bQuiet):
+
+    htmlHeader = ''
+    sResponse = ''
     strData = urllib.parse.urlencode(dValues)
     byteData = strData.encode()
     req = urllib.request.Request(sUrl, byteData)
     httpResponse = urllib.request.urlopen(req)
-    byteResponse = httpResponse.read()
-    sResponse = byteResponse.decode()
 
-    verboseHTML = None
-    if bVerbose:
-        verboseHTML = httpResponse.info()
+    if bVerbose or bQuiet:
+        htmlHeader = httpResponse.info()
 
-    return verboseHTML, sResponse
+    if not bQuiet:
+        byteResponse = httpResponse.read()
+        sResponse = byteResponse.decode()
+
+    return htmlHeader, sResponse
 
 if method == 'get':
+    
     if(data or filename):
         print('-d or -f option only can be used with POST method not GET')
     else:
-        header, content = getUrl(url, verbose)
+        header, content = getUrl(url, verbose, quiet)
         print(header, content)
 
 if method == 'post':
+
     if filename:
         sPostData = (convertStringDictToDict(readFile(filename)))
     elif data:
@@ -457,5 +468,5 @@ if method == 'post':
     else:
         sPostData = ''
 
-    header, content= postUrl(url, verbose, sPostData)
+    header, content= postUrl(url, sPostData, verbose, quiet)
     print(header, content)
