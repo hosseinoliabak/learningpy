@@ -401,10 +401,6 @@ def getArguments():
     # Return all variable values
     return method, header, data, filename, verbose, quiet, url
 
-# Run get_args()
-# get_args()
-
-
 # Match return values from getArguments() and assign to their respective variables
 method, header, data, filename, verbose, quiet, url = getArguments()
 
@@ -413,16 +409,18 @@ def convertListDictToDict(lList):
 
 if header:
     header = convertListDictToDict(header)
+else:
+    header = dict()
 
 print(method, header, data, filename, verbose, quiet, url)
 
 
-
-def getUrl(sUrl, bVerbose, bQuiet):
+def getUrl(sUrl, dHeaders, bVerbose, bQuiet):
 
     htmlHeader = ''
     sHtml = ''
-    httpResponse = urllib.request.urlopen(sUrl)
+    req = urllib.request.Request(sUrl, headers=dHeaders)
+    httpResponse = urllib.request.urlopen(req)
 
     if bVerbose or bQuiet:
         htmlHeader = httpResponse.info()
@@ -443,13 +441,13 @@ def readFile(sFilename):
         sFileContent = flFile.read()
     return sFileContent.rstrip()
 
-def postUrl(sUrl, dValues, bVerbose, bQuiet):
+def postUrl(sUrl, dHeaders, dValues, bVerbose, bQuiet):
 
     htmlHeader = ''
     sResponse = ''
     strData = urllib.parse.urlencode(dValues)
     byteData = strData.encode()
-    req = urllib.request.Request(sUrl, byteData)
+    req = urllib.request.Request(sUrl, byteData, headers=dHeaders)
     httpResponse = urllib.request.urlopen(req)
 
     if bVerbose or bQuiet:
@@ -466,7 +464,7 @@ if method == 'get':
     if(data or filename):
         print('-d or -f option only can be used with POST method not GET')
     else:
-        header, content = getUrl(url, verbose, quiet)
+        header, content = getUrl(url, header, verbose, quiet)
         print(header, content)
 
 if method == 'post':
@@ -478,5 +476,5 @@ if method == 'post':
     else:
         sPostData = ''
 
-    header, content= postUrl(url, sPostData, verbose, quiet)
+    header, content= postUrl(url, header, sPostData, verbose, quiet)
     print(header, content)
