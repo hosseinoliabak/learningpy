@@ -348,7 +348,8 @@ def getArguments():
     respectively. post should have either -d or -f but not both. However, get
     option should not used with the options -d or -f.'''
     lChoices = ['get', 'post']
-    parser.add_argument('method', choices=lChoices, help=methodHelp, default = 'get', nargs='?')
+    parser.add_argument(
+    'method', choices=lChoices, help=methodHelp,default = 'get', nargs='?')
 
     # Add argument header
     headerHelp = '''To pass the headers value to your HTTP operation, you could
@@ -427,8 +428,8 @@ def urlSanityCheck(sUrl):
 def getUrl(sUrl, dHeaders, bVerbose, bQuiet):
 
     sUrl = urlSanityCheck(sUrl)
-    httpHeader = ''
-    sHtml = ''
+    httpHeader = None
+    sHtml = None
     req = urllib.request.Request(sUrl, headers=dHeaders)
     httpResponse = urllib.request.urlopen(req)
     iHttpCode = httpResponse.getcode()
@@ -437,7 +438,7 @@ def getUrl(sUrl, dHeaders, bVerbose, bQuiet):
         httpHeader = httpResponse.info()
 
     if not bQuiet:
-        sHtml = httpResponse.read().decode()
+        sHtml = httpResponse.read().decode(errors='ignore')
 
     return httpHeader, sHtml, iHttpCode
 
@@ -454,6 +455,7 @@ def readFile(sFilename):
 
 def postUrl(sUrl, dHeaders, dValues, bVerbose, bQuiet):
 
+    sUrl = urlSanityCheck(sUrl)
     httpHeader = None
     sResponse = None
     strData = urllib.parse.urlencode(dValues)
@@ -467,7 +469,7 @@ def postUrl(sUrl, dHeaders, dValues, bVerbose, bQuiet):
 
     if not bQuiet:
         byteResponse = httpResponse.read()
-        sResponse = byteResponse.decode()
+        sResponse = byteResponse.decode(errors='ignore')
 
     return httpHeader, sResponse, iHttpCode
 
