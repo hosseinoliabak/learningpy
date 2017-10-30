@@ -432,12 +432,17 @@ def getUrl(sUrl, dHeaders, bVerbose, bQuiet):
     httpHeader = None
     sHtml = None
     req = urllib.request.Request(sUrl, headers=dHeaders)
+
     try:
         httpResponse = urllib.request.urlopen(req)
+
     except Exception as e:
+
         print(str(e))
         quit()
+
     else:
+
         iHttpCode = httpResponse.getcode()
 
         if bVerbose or bQuiet:
@@ -467,12 +472,16 @@ def postUrl(sUrl, dHeaders, dValues, bVerbose, bQuiet):
     strData = urllib.parse.urlencode(dValues)
     byteData = strData.encode()
     req = urllib.request.Request(sUrl, byteData, headers=dHeaders)
+
     try:
         httpResponse = urllib.request.urlopen(req)
+
     except Exception as e:
         print(str(e))
         quit()
+
     else:
+
         iHttpCode = httpResponse.getcode()
 
         if bVerbose or bQuiet:
