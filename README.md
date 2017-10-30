@@ -1,6 +1,7 @@
 # learningpy
 The goal of this project is to "practice" Python 3.  
 The assignments are assgined by Dr. Chuck @ https://www.py4e.com/  
+
 "Data Visualization" projects is not yet started, skipped to work on
 "Python Programming for Network Engineers" by David Bombal @ http://www.cciepython.com
     Free videos @ https://youtu.be/IhroIrV9_7w
