@@ -419,9 +419,14 @@ else:
 
 # print(method, header, data, filename, verbose, quiet, url, output) # debugging
 
+def urlSanityCheck(sUrl):
+    if not re.match('^https?://', sUrl):
+        sUrl = 'http://' + sUrl
+    return sUrl
 
 def getUrl(sUrl, dHeaders, bVerbose, bQuiet):
 
+    sUrl = urlSanityCheck(sUrl)
     httpHeader = ''
     sHtml = ''
     req = urllib.request.Request(sUrl, headers=dHeaders)
