@@ -356,7 +356,9 @@ def getArguments():
     use -H option. Set the header of the request in the "key:value" format.
     Notice that; you can have multiple headers by having the -H option before
     each header parameter. i. g. httpc -H key1:value2 -H key2:value2 ...'''
-    parser.add_argument('-H', '--header', help=headerHelp, action='append')
+    parser.add_argument(
+    '-H', '--header', help=headerHelp, action='append',
+    default=['User-Agent:Concordia-HTTP/1.0'])
 
     # Add arguments data either of -d or -f
     # -d
@@ -409,6 +411,7 @@ def getArguments():
 
 # Match return values from getArguments() and assign to their respective variables
 method, header, data, filename, verbose, quiet, url, output = getArguments()
+#print(method, header, data, filename, verbose, quiet, url, output) # debugging
 
 def convertListDictToDict(lList):
     return {sItem.split(':')[0]:sItem.split(':')[1] for sItem in lList}
@@ -418,11 +421,9 @@ if header:
 else:
     header = dict()
 
-# print(method, header, data, filename, verbose, quiet, url, output) # debugging
-
 def urlSanityCheck(sUrl):
     if not re.match('^https?://', sUrl):
-        sUrl = 'http://' + sUrl
+        sUrl = 'https://' + sUrl
     return sUrl
 
 def getUrl(sUrl, dHeaders, bVerbose, bQuiet):
@@ -431,16 +432,21 @@ def getUrl(sUrl, dHeaders, bVerbose, bQuiet):
     httpHeader = None
     sHtml = None
     req = urllib.request.Request(sUrl, headers=dHeaders)
-    httpResponse = urllib.request.urlopen(req)
-    iHttpCode = httpResponse.getcode()
+    try:
+        httpResponse = urllib.request.urlopen(req)
+    except Exception as e:
+        print(str(e))
+        quit()
+    else:
+        iHttpCode = httpResponse.getcode()
 
-    if bVerbose or bQuiet:
-        httpHeader = httpResponse.info()
+        if bVerbose or bQuiet:
+            httpHeader = httpResponse.info()
 
-    if not bQuiet:
-        sHtml = httpResponse.read().decode(errors='ignore')
+        if not bQuiet:
+            sHtml = httpResponse.read().decode(errors='ignore')
 
-    return httpHeader, sHtml, iHttpCode
+        return httpHeader, sHtml, iHttpCode
 
 def convertStringDictToDict(stringData):
 
@@ -461,17 +467,22 @@ def postUrl(sUrl, dHeaders, dValues, bVerbose, bQuiet):
     strData = urllib.parse.urlencode(dValues)
     byteData = strData.encode()
     req = urllib.request.Request(sUrl, byteData, headers=dHeaders)
-    httpResponse = urllib.request.urlopen(req)
-    iHttpCode = httpResponse.getcode()
+    try:
+        httpResponse = urllib.request.urlopen(req)
+    except Exception as e:
+        print(str(e))
+        quit()
+    else:
+        iHttpCode = httpResponse.getcode()
 
-    if bVerbose or bQuiet:
-        httpHeader = httpResponse.info()
+        if bVerbose or bQuiet:
+            httpHeader = httpResponse.info()
 
-    if not bQuiet:
-        byteResponse = httpResponse.read()
-        sResponse = byteResponse.decode(errors='ignore')
+        if not bQuiet:
+            byteResponse = httpResponse.read()
+            sResponse = byteResponse.decode(errors='ignore')
 
-    return httpHeader, sResponse, iHttpCode
+        return httpHeader, sResponse, iHttpCode
 
 if method == 'get':
 
