@@ -15,8 +15,9 @@ if password:
 
 tn.write(b"conf t\n")
 tn.write(b"int l0\n")
+tn.write(b"ip address 1.1.1.1 255.255.255.255\n")
 tn.write(b"end\n")
-tn.write(b"exit\n")
+tn.write(b"exit\n") # this is essential for the next line not to wait for EOL
 
 print(tn.read_all().decode('ascii'))
 
