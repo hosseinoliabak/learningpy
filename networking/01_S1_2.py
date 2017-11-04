@@ -19,7 +19,7 @@ tn.write(b"conf t\n")
 
 
 
-for i in range(2, 11):
+for i in range(2, 101):
     tn.write(b"vlan "+ str(i).encode('ascii')+ b"\n")
     tn.write(b"name Python_VLAN_" + str(i).encode('ascii') + b"\n")
 
