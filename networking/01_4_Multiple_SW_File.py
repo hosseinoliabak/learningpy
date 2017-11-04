@@ -11,8 +11,6 @@ def telnettocisco(ip, user, password):
         tn.read_until(b"Password: ")
         tn.write(password.encode('ascii') + b"\n")
 
-    tn.write(b"enable\n")
-    tn.write(b"test\n")
     tn.write(b"conf t\n")
 
 
@@ -20,7 +18,7 @@ def telnettocisco(ip, user, password):
         tn.write(b"no vlan "+ str(i).encode('ascii')+ b"\n")
 
     tn.write(b"end\n")
-    tn.write(b"exit\n") # this is essential for the next line not to wait for EOL
+    tn.write(b"exit\n")
     print(tn.read_all().decode('ascii'))
 
 
@@ -29,5 +27,5 @@ passwd = getpass.getpass()
 
 with open("01_5_Switches_IPs.txt", "r") as flSwitches:
     for line in flSwitches:
-        line.strip()
+        line = line.strip()
         telnettocisco(line, username, passwd)
