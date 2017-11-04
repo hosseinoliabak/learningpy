@@ -29,4 +29,5 @@ passwd = getpass.getpass()
 
 with open("01_5_Switches_IPs.txt", "r") as flSwitches:
     for line in flSwitches:
+        line.strip()
         telnettocisco(line, username, passwd)
