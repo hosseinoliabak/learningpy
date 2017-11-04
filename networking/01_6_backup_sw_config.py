@@ -24,6 +24,9 @@ passwd = getpass.getpass()
 with open("01_5_Switches_IPs.txt", "r") as flSwitches:
     for line in flSwitches:
         line = line.strip()
+        print("Reading the configuration of "+ line+ "...")
         with open("01_Switch"+ line+ ".conf", "w") as saveOutput:
+            print("Saving the configuration of "+ line+ "...")
             saveOutput.write(telnettocisco(line, username, passwd))
-print("Done!")
+            print()
+print("All Done! Browse the current directory to locate the backups!")
