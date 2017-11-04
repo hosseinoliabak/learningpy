@@ -27,6 +27,6 @@ def telnettocisco(ip, user, password):
 username = input("Enter your telnet username: ")
 passwd = getpass.getpass()
 
-with open('01_5_Switches_IPs.txt', 'r') as flSwitches:
+with open("01_5_Switches_IPs.txt", "r") as flSwitches:
     for line in flSwitches:
         telnettocisco(line, username, passwd)
