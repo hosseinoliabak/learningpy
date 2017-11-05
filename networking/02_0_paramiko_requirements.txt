@@ -1,11 +1,26 @@
-Paramiko is a Python (2.7, 3.4+) implementation of the SSHv2 protocol [1], providing both client and server
-functionality.
-
-Install Paramiko on Ubuntu client:
-
+First Step:
+-----------
 apt-get update
 apt-get install build-essential libssl-dev -y
 apt-get install python3-pip -y
 pip3 install --upgrade pip
+
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+Install Paramiko on Ubuntu clients:
+-----------------------------------
+Paramiko is a Python (2.7, 3.4+) implementation of the SSHv2 protocol [1], providing both client and server
+functionality.
+
+
 pip3 install cryptography
 pip3 install paramiko
+
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+Install Netmiko on Ubuntu clients:
+----------------------------------
+Netmiko is a Multi-vendor library to simplify Paramiko SSH connections to network devices.
+
+pip3 install netmiko
+
