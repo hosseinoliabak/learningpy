@@ -35,3 +35,4 @@ for device in devices:
 
 
 ssh_conn.send_command('wr')
+ssh_conn.disconnect()
