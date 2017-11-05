@@ -4,7 +4,6 @@ import json
 driver = get_network_driver('ios')
 bgplist= ['192.168.122.10', '192.168.122.30']
 
-
 for ip in bgplist:
     driver = get_network_driver('ios')
     iosv = driver(ip, 'test', 'test')
