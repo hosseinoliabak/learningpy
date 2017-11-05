@@ -80,4 +80,37 @@ Taking advantage of "List Comprehensions":
 >>> print(sorted([(v, k) for k, v in c.items()]))
 
 [(1, 'b'), (10, 'a'), (22, 'c')]
+
+
+
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+What do * and ** before a variable name mean in a function signature?
+
+Inside a function header:
+
+* collects all the positional arguments in a tuple
+
+** collects all the keyword arguments in a dictionary
+
+>>> def functionA(*a, **kw):
+       print(a)
+       print(kw)
+
+
+>>> functionA(1, 2, 3, 4, 5, 6, a=2, b=3, c=5)
+(1, 2, 3, 4, 5, 6)
+{'a': 2, 'c': 5, 'b': 3}
+In a function call:
+
+* unpacks an list or tuple into position arguments
+
+** unpacks an dictionary into keyword arguments
+
+>>> lis=[1, 2, 3, 4]
+>>> dic={'a': 10, 'b':20}
+>>> functionA(*lis, **dic)  #it is similar to functionA (1, 2, 3, 4, a=10, b=20)
+(1, 2, 3, 4)
+{'a': 10, 'b': 20}
 '''
