@@ -13,5 +13,5 @@ def print_bgp_neighbors(ip):
 bgplist= ['192.168.122.10', '192.168.122.30']
 
 for ip in bgplist:
-    print("Gathering the BGP neighbor of: "+ ip)
+    print("Gathering the BGP neighbor information of: "+ ip)
     print_bgp_neighbors(ip)
