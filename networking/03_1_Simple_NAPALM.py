@@ -48,3 +48,5 @@ print(json.dumps(sw_output, sort_keys=True, indent=4))
 
 sw_output = sw1.ping('192.168.122.1')
 print(json.dumps(sw_output, sort_keys=True, indent=4))
+
+sw1.close()
