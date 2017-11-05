@@ -1,0 +1,11 @@
+Paramiko is a Python (2.7, 3.4+) implementation of the SSHv2 protocol [1], providing both client and server
+functionality.
+
+Install Paramiko on Ubuntu client:
+
+apt-get update
+apt-get install build-essential libssl-dev -y
+apt-get install python3-pip -y
+pip3 install --upgrade pip
+pip3 install cryptography
+pip3 install paramiko
