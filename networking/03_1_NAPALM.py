@@ -29,7 +29,7 @@ sw1 = driver('192.168.122.10', 'test', 'test')
 sw1.open()
 
 sw_output = sw1.get_facts()
-print(sw_output)
+print(json.dumps(sw_output, sort_keys=True, indent=4))
 
 if_output = sw1.get_interfaces()
-print(if_output)
+print(json.dumps(if_output, sort_keys=True, indent=4))
