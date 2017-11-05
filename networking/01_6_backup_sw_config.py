@@ -1,7 +1,7 @@
 import getpass
 import telnetlib
 
-def telnettocisco(ip, user, password):
+def telnetToCisco(ip, user, password):
 
     tn = telnetlib.Telnet(ip)
 
@@ -27,6 +27,6 @@ with open("01_5_Switches_IPs.txt", "r") as switches:
         print("Reading the configuration of "+ line+ "...")
         with open("01_Switch"+ line+ ".conf", "w") as saveOutput:
             print("Saving the configuration of "+ line+ "...")
-            saveOutput.write(telnettocisco(line, username, passwd))
+            saveOutput.write(telnetToCisco(line, username, passwd))
             print()
 print("All Done! Browse the current directory to locate the backups!")

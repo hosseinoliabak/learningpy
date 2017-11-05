@@ -1,7 +1,7 @@
 import getpass
 import telnetlib
 
-def telnettocisco(ip, user, password):
+def telnetToCisco(ip, user, password):
 
     tn = telnetlib.Telnet(ip)
 
@@ -32,4 +32,4 @@ passwd = getpass.getpass()
 
 HOST = [("10.10.22." + str(n)) for n in range(11, 15)]
 for n in HOST:
-    telnettocisco(n, username, passwd)
+    telnetToCisco(n, username, passwd)

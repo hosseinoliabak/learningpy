@@ -1,7 +1,7 @@
 import getpass
 import telnetlib
 
-def telnettocisco(ip, user, password):
+def telnetToCisco(ip, user, password):
 
     tn = telnetlib.Telnet(ip)
 
@@ -28,4 +28,4 @@ passwd = getpass.getpass()
 with open("01_5_Switches_IPs.txt", "r") as flSwitches:
     for line in flSwitches:
         line = line.strip()
-        telnettocisco(line, username, passwd)
+        telnetToCisco(line, username, passwd)
