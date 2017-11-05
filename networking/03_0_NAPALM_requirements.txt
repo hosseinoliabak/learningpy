@@ -1,0 +1,25 @@
+NAPALM
+
+NAPALM (Network Automation and Programmability Abstraction Layer with Multivendor support) is a Python library that
+implements a set of functions to interact with different router vendor devices using a unified API.
+
+Full installation
+
+apt-get update
+apt-get install build-essential libssl-dev -y
+apt-get install python3-pip -y
+pip3 install --upgrade pip
+pip3 install cryptography
+pip3 install netmiko
+pip3 install napalm
+
+
+
+https://github.com/napalm-automation/napalm
+
+
+Installation:
+https://napalm.readthedocs.io/en/latest/installation/index.html
+
+Supported Devices, Getters support matrix:
+https://napalm.readthedocs.io/en/latest/support/index.html
