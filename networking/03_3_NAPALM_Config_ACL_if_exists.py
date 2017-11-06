@@ -8,6 +8,7 @@ print('Accessing 192.168.122.10...')
 sw1.load_merge_candidate(filename='ACL1.cfg')
 
 diffs = sw1.compare_config()
+print(diffs)
 if len(diffs) > 0:
     sw1.commit_config()
 else:
