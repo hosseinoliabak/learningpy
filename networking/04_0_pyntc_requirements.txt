@@ -1,0 +1,36 @@
+https://github.com/networktocode/pyntc
+
+Introduction:
+-------------
+pyntc is an open source multi-vendor Python library that establishes a common framework for working with different
+network APIs & device types (including IOS devices)
+
+It's main purpose to is to simplify the execution of common tasks including:
+
+    Executing commands
+    Copying files
+    Upgrading devices
+    Rebooting devices
+    Saving / Backing Up Configs
+
+
+Installing pyntc
+----------------
+Option 1:
+
+apt-get update
+apt-get install build-essential libssl-dev -y
+apt-get install python3-pip -y
+pip3 install --upgrade pip
+pip3 install cryptography
+pip3 install netmiko
+pip3 install napalm
+pip3 install pyntc
+
+
+
+Option 2:
+
+git clone https://github.com/networktocode/pyntc.git
+cd pyntc
+python setup.py install
