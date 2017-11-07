@@ -6,8 +6,7 @@ sw1.open()
 
 sw1_runningConfig = sw1.running_config
 
-with open("Switch"+ HOST+ ".conf", "w") as saveOutput:
+with open("Switch_"+ HOST+ ".conf", "w") as saveOutput:
     print("Saving the configuration of "+ HOST+ "...")
-    saveOutput.write(telnetToCisco(line, username, passwd))
-    print()
+    saveOutput.write(sw1_runningConfig)
 print("All Done! Browse the current directory to locate the backups!")
