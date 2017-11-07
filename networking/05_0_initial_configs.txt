@@ -1,0 +1,80 @@
+SW1
+----
+en
+conf t
+hostname SW1
+username test pri 15 password test 15
+ip domain-name hosseinoliabak
+crypto key generate rsa
+1024
+line vty 0 4
+login local
+transport input all
+exit
+int gig 0/0
+no switchport
+ip add 192.168.122.10 255.255.255.0
+no shut
+end
+
+
+SW2
+----
+en
+conf t
+hostname SW2
+username test pri 15 password test
+ip domain-name hosseinoliabak
+crypto key generate rsa
+1024
+line vty 0 4
+login local
+transport input all
+exit
+int gig 0/0
+no switchport
+ip add 192.168.122.20 255.255.255.0
+no shut
+end
+
+
+
+R1
+----
+en
+conf t
+hostname R1
+username test pri 15 password test 15
+ip domain-name hosseinoliabak
+crypto key generate rsa
+1024
+line vty 0 4
+login local
+transport input all
+exit
+int gig 0/0
+ip add 192.168.122.30 255.255.255.0
+no shut
+end
+
+
+
+R2
+----
+en
+conf t
+hostname R2
+username test pri 15 password test 15
+ip domain-name hosseinoliabak
+crypto key generate rsa
+1024
+line vty 0 4
+login local
+transport input all
+exit
+int gig 0/0
+ip add 192.168.122.40 255.255.255.0
+no shut
+end
+
+

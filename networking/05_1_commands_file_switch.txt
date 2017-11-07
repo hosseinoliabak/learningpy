@@ -1,0 +1,7 @@
+ip name-server 8.8.8.8
+ip domain-lookup
+vlan 10
+vlan 20
+vlan 30
+router ospf 1
+network 0.0.0.0 255.255.255.255 area 0
